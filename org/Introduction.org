@@ -1,0 +1,327 @@
+#+STARTUP: showall
+
+#+TITLE:     Introduction
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      Winter 2017
+#+OPTIONS: toc:nil html:t num:nil
+#+HTML_LINK_UP: http://www.gribblelab.org/stats/index.html
+#+HTML_LINK_HOME: http://www.gribblelab.org/stats/index.html
+
+* Readings
+
+- Maxwell & Delaney [[file:readings/MD1.pdf][Chapter 1]]
+
+* Welcome
+
+Welcome to Introduction to Statistics Using R (Psychology 9041B) for
+the winter term, 2017.
+
+The goal of this one-semester graduate seminar is to provide you with
+a deeper understanding of the logic behind statistical analyses of
+data, to learn a set of standard statistical techniques, and to gain
+hands-on experience using the R language for statistical computing and
+graphical displays of data. We will cover an initial set of core
+topics including sampling distributions, t-tests, ANOVA (and some of
+its many variants), multiple comparisons & post-hoc tests, and
+multiple regression. We also cover a set of other topics pertinent to
+modern research in neuroscience such as maximum-likelihood estimation,
+bootstrapping and resampling techniques, and bayesian approaches to
+data analysis and modeling.
+
+There will be a significant hands-on practical aspect to the course,
+namely learning to use the [[http://r-project.org][R]] language for statistical computation and
+graphical display of data. No prior experience with R is required.
+
+If your statistical background is limited, you will benefit greatly
+from this course, which focuses on the logic of statistical analysis,
+using a practical, hands-on approach focusing on real-world
+applications in research.
+
+If you have had some of these topics before in previous courses, you
+will probably still benefit greatly from covering the same ground, in
+a different way. You will also learn to use R, which will serve you
+very well in the future.
+
+* Potential list of topics
+
+Here is a list of topics we could cover in the course. In the first
+few classes we will discuss which topics to cover, and make a
+collective decision based on the background and interests of the group
+this year.
+
+- The Scientific Method & Statistical Reasoning
+- Null Hypothesis Significance Tests (NHST), Sampling Distributions and the T-test
+- Single Factor Between Subjects Analysis of Variance (ANOVA)
+- Multiple Comparisons, Type-I Error
+- Two Factor and 3+ Factor ANOVA
+- Analysis of Covariance (ANCOVA)
+- Repeated-Measures (Within Subjects) ANOVA
+- Mixed (Between / Within) ANOVA
+- Multivariate ANOVA (MANOVA)
+- Multiple Regression
+- Principal Components Analysis (PCA)
+- Maximum Likelihood Estimation (MLE)
+- Logistic Regression
+- Bootstrapping and Resampling Techniques
+- Intro to Bayesian Approaches
+- Bayes: Computing the Posterior Using Conjugate Priors
+- Bayes: Computing the Posterior Using Grid Approximation
+- Bayes: Computing the Posterior Using Markov Chain Monte Carlo (MCMC) Methods
+- Machine Learning: clustering techniques
+- Machine Learning: classification techniques
+
+There is always a balance to be struck between breadth (number of
+topics) and depth (level of detail), and given that this course is
+presently offered as a one-semester course, there are limits to what
+we can cover in sufficient detail. 
+
+We will start out by considering the introductory topics in some
+detail, and then we will go on to the more advanced topics, with less
+detail, at least in class. You should explore topics that are relevant
+to your own work in as much detail as you deem necessary, even if we
+don't have time in class.
+
+At the beginning of the semester we will talk about potential topics
+and decide on a selection that best suits the class.
+
+* Location and Time
+
+- Mondays & Wednesdays, 1:30--2:30pm in PAB 150
+
+* Textbook & Readings
+
+There is one *mandatory* textbook in this course. The Maxwell &
+Delaney book is a large book and very extensive, but I'm serious when
+I say that I want you to do your best to read each section that is
+assigned. You are taking a graduate course in statistics, and you have
+a unique opportunity to dedicate a block of time each week to
+consolidating the knowledge you already have, and to learn new things
+about statistical analyses of data.
+
+Some material from the Maxwell & Delaney book will be provided on the
+course webpage.
+
+We will cover the initial set of core topics using the approach taken
+in Maxwell & Delaney:
+
+** Mandatory Textbook
+
+- Designing Experiments and Analysing Data: A Model Comparison
+  Perspective (2nd Edition) by Scott E. Maxwell & Harold
+  D. Delaney. Lawrence Erlbaum Associates (2003). ISBN: 0805837183\\
+  [ [[http://www.amazon.com/dp/0805837183][buy it at amazon.com]] ]
+
+** Recommended Books
+
+The Keppel book is not mandatory but I would encourage you all to
+acquire this book as well. It is a very good statistics text that
+emphasizes computational formulae:
+
+- Design and Analysis: A Researcher's Handbook (4th Ed.) by Geoffrey
+  Keppel. Prentice Hall (2004).\\
+  ISBN: 0135159415
+
+There are many books on R, here is a decent one aimed at beginner users:
+
+- A Beginner's Guide to R by Zuur, Ieno & Meesters. Springer
+  (2009). ISBN: 9780387938363\\
+  [ [[http://www.amazon.com/dp/0387938362][buy it at amazon.com]] ] [ [[http://www.springerlink.com/content/978-0-387-93836-3][read it online]] ] [ [[http://www.highstat.com/book3.htm][code & data]] ]
+
+We will also be using a new texbook by Hadley Wickham & Garrett
+Grolemund called [[http://r4ds.had.co.nz][R for Data Science]]. You can buy a hardcopy from
+Amazon but you can also view the entire book in html, using the above
+link. The book is a good introduction to using R for data analysis and
+visualization, and in particular we will be using it to learn about
+data wrangling (loading in, and manipulating data) and data plotting
+(using ggplot2).
+
+Other selected readings will be assigned as appropriate for the topic
+each week.
+
+* Software
+
+R is a sophisticated package for graphical and exploratory data
+analysis, and is a powerful statistical programming language. R can be
+downloaded for free for Windows, Macintosh, Linux, and Unix operating
+systems from [[https://www.r-project.org][https://www.r-project.org]]. The R manual is also available
+for free on the web. R code is platform-independent. R has extensive
+on-line help, and there are lots of other resources on-line for using
+R.
+
+RStudio is a free and open-source integrated development environment
+(IDE) for R. You can download it from [[https://www.rstudio.com][https://www.rstudio.com]]. I
+recommend you use it, although if you prefer you can use the plain R
+client above.
+
+Note that all of the code and data files that are referred to in the
+Zuur et al. (2009) text can be downloaded from
+[[http://www.highstat.com/book3.htm]]
+
+It's likely that none of you will have used R before, although some of
+you may have used other statistical software packages (like SPSS), or
+spreadsheet programs (like Excel) or even some numerical programming
+languages (like Matlab). A non-trivial aspect of the work involved in
+this course will be learning how to use R. There is a certain learning
+curve involved with starting to program in any language. Once you
+conquer that initial stage, your productivity will grow exponentially.
+
+R is available for Macintosh OS X, Linux, and Windows. I have
+experience with Mac OS X and with Linux. /I do not know anything about
+Microsoft Windows/ (apart from knowing that I don't want to use
+it). If you choose to use Windows, my ability to help you troubleshoot
+issues with software will be extremely limited. If you want to try
+Linux without erasing your Windows partition, a good solution is to
+use virtualization software such as [[http://www.vmware.com/][VMware]] or [[http://www.virtualbox.org/][VirtualBox]], and install
+Linux (e.g. [[http://www.ubuntu.com][Ubuntu]]) on a virtual machine image.
+
+** Some useful R links
+
+- [[http://www.r-project.org][The R Project for Statistical Computing]]
+- [[http://www.r-bloggers.com/why-use-r/][Why use R?]]
+- [[http://www.personality-project.org/r/r.guide.html][Using R for Psychological Research]]
+- [[http://www.statmethods.net/index.html][Quick-R for SAS/SPSS/Stata Users]]
+- [[http://myowelt.blogspot.com/2008/05/obtaining-same-anova-results-in-r-as-in.html][R, ANOVA and type-II vs type-III Sums of Squares]]
+- [[http://cran.r-project.org/doc/contrib/R-and-octave.txt][R for Octave/Matlab Users]]
+- [[http://mathesaurus.sourceforge.net/octave-r.html][R for Matlab Users]]
+- [[http://mathesaurus.sourceforge.net/matlab-python-xref.pdf][Matlab/Python/R Cheat Sheet]]
+- [[http://www.rstudio.com][RStudio]]
+
+* Laptops
+
+Bring a laptop to class, so that you can try things out in R as you
+see them.
+
+* Grades & Course Requirements
+
+- 100% assignments
+- no exams or tests
+
+The requirement for this course is simple: work diligently. This
+includes attending class, doing the readings carefully before the
+seminar meets, reading beyond the syllabus, working regularly on the
+problem sets, practicing using statistical software, and coming to see
+me for extra help, as needed. You will spend many hours learning and
+using R to implement the concepts discussed in class. Because you each
+have different backgrounds and interests, the amount of time necessary
+to master the material will vary. That being said, I am confident that
+with concerted effort each one of you can learn the material.
+
+One important thing to realize: We will not have enough time in the
+classes to go over the details of every concept covered in the
+course. In class I will highlight the major ideas and provide a
+conceptual roadmap for you to navigate through the material. You will
+be responsible for reading the material in the textbooks on your own
+and asking questions if you need more guidance. Just because I didn't
+say it out loud in class doesn't mean you're not responsible for
+it. Pay attention to the readings assigned for each week and do them
+in advance of class, not afterwards.
+
+There is no doubt, there is a lot of reading assigned in this
+course. Remember, you are a full time graduate student, your full time
+job is to learn. Do the readings, they are a requirement of the
+course.
+
+Feel free to work together on the assignments. Just do not hand in a
+document to me that is identical to someone else's. Also note that you
+won't learn nearly as much if you simply copy someone else's work. You
+will get the most out of this course if you work through the problem
+sets on your own. Your goal here should not be to get a high
+grade. Your goal should be to learn as much as you can.
+
+* Some Final Words
+
+Statistics (I have sometimes heard it called Sadistics) has a
+reputation as a difficult topic, and one that depends on an
+extraordinary mathematical or arithmetic ability. It's my hope that I
+can convince you otherwise by the end of this course. Statistics is
+often taught in a cookbook fashion, whereby you learn a series of
+recipies that are often tied to particular software packages
+(e.g. SPSS). Quite often you are evaluated (e.g. in exams or
+assignments) based on your ability to recall memorized recipes and
+equations, and / or to produce accurate arithmetic calculations. You
+might even earn high grades in these courses, not because you
+understand anything about statistics per se, but because you have
+learned how to regurgitate statistical recipes and use a calculator.
+
+Statistics, at its core, is not about calculation. Rather statistics
+(at least the statistics we cover in this course) is a /logical
+framework for interpreting data/. The key is to understand the /logic/
+of statistical procedures. What I would like to drive home for you is
+that an understanding of the logic behind statistics will empower you
+in your future scientific endeavors. You will be able to incorporate
+new statistical analyses into your own work, even if you haven't
+formally learned about them before, because you will find that you
+have insight into the fundamental logic behind them.
+
+It's a cliche, but it's like the difference between being a cook and
+being a chef. As a cook you know how to follow particular recipies but
+you have little ability to flexibly adapt recipes for novel
+situations, and you have little facility for developing your own new
+recipies. As a chef you understand a core set of basic principles that
+allows you to succeed in new environments by being creative (note that
+being creative does not mean breaking rules, per se, but understanding
+the ways in which you have flexibility, within the rules).
+
+Being able to carry out statistical analyses of course depends on
+computation, ultimately, but the /implementation/ should be
+independent of the statistical logic itself. In this course we will
+focus largely on the logic of the statistical procedures we
+cover. There will be a practical aspect as well, as we learn to use R
+to implement statistical analyses ... but as you will see, R is built
+on an extensive core of statistical smarts so that as a user, you
+won't have to do much actual calculation yourself.
+
+There is some degree of recipe-learning in any statistical software
+package, whether it's SPSS or SAS or STATA or MATLAB or Python or
+R---but we will devote most of our time to talking about the logic
+behind each procedure.
+
+* My Role and Your Role
+
+My goal as instructor of this course is to /maximize your opportunity
+to learn/ both the fundamental logic and reason behind statistics, and
+some practical tools (using R) for carrying out statistical analyses
+and presenting data graphically. This is *not* an undergraduate-style
+lecture course in which you can succeed by sitting back and memorizing
+what I say. What you ultimately get out of this course depends, in the
+end, on the efforts you put in to exploring the theoretical and
+practical components of the course. I'm not going to tell you
+everything you need to know. My role is more like a tour-guide,
+showing you interesting topics and avenues that you will explore on
+your own.
+
+I am more than happy to spend some extra time with you going over
+material and clarifying concepts that may be difficult to understand
+at first. Often hearing something said in a new and different way will
+help you gain a better understanding. I don't have formal office
+hours; send me an email and we can schedule a time to meet. If there
+is a clear need to go over material as a class, I am happy to arrange
+extra tutorial sessions.
+
+One of the challenges of a course like this is that each of you comes
+to class with a different set of background skills and experiences
+with statistics, with programming and with math. We will try to talk
+about the ideas in such a way that it doesn't leave the beginners
+behind, and at the same time it doesn't bore the life out of students
+with more experience. Having said that, each of you has a
+responsibility to take charge of your own experience. If you are
+someone with less background and experience with these concepts, then
+it is up to you to do the extra work to bring yourself up to
+speed. You will find that this is not an uncommon feature of being a
+researcher---namely pulling yourself up by the boot-straps to learn
+something new. I do it all the time and I'm old (!). For those of you
+with more experience, it will be your responsibility to go the extra
+mile, to dive deeper into the concepts that we touch on in class, to
+learn the more advanced concepts and techniques. To put it bluntly, if
+you're bored, then it's your responsibility to fix that problem. I'll
+show you around the new neighborhoods but it's up to you to open the
+doors, turn the corners and explore new avenues.
+
+* Contact Info
+
+- no formal office hours
+- contact me by email: paul [at] gribblelab [dot] org
+- NSC 228 (Office)
+- NSC 245G (Lab)
+

@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2016-12-28 Wed 11:43 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="viewport" content="width=device-width, initial-scale=1" />
+<title>Introduction</title>
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Paul Gribble" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="mystyle.css" /><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create', 'UA-52544521-1', 'auto');ga('send', 'pageview');</script>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="http://www.gribblelab.org/stats/index.html"> UP </a>
+ |
+ <a accesskey="H" href="http://www.gribblelab.org/stats/index.html"> HOME </a>
+</div><div id="content">
+<h1 class="title">Introduction</h1>
+
+<div id="outline-container-orgheadline1" class="outline-2">
+<h2 id="orgheadline1">Readings</h2>
+<div class="outline-text-2" id="text-orgheadline1">
+<ul class="org-ul">
+<li>Maxwell &amp; Delaney <a href="readings/MD1.pdf">Chapter 1</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline2" class="outline-2">
+<h2 id="orgheadline2">Welcome</h2>
+<div class="outline-text-2" id="text-orgheadline2">
+<p>
+Welcome to Introduction to Statistics Using R (Psychology 9041B) for
+the winter term, 2017.
+</p>
+
+<p>
+The goal of this one-semester graduate seminar is to provide you with
+a deeper understanding of the logic behind statistical analyses of
+data, to learn a set of standard statistical techniques, and to gain
+hands-on experience using the R language for statistical computing and
+graphical displays of data. We will cover an initial set of core
+topics including sampling distributions, t-tests, ANOVA (and some of
+its many variants), multiple comparisons &amp; post-hoc tests, and
+multiple regression. We also cover a set of other topics pertinent to
+modern research in neuroscience such as maximum-likelihood estimation,
+bootstrapping and resampling techniques, and bayesian approaches to
+data analysis and modeling.
+</p>
+
+<p>
+There will be a significant hands-on practical aspect to the course,
+namely learning to use the <a href="http://r-project.org">R</a> language for statistical computation and
+graphical display of data. No prior experience with R is required.
+</p>
+
+<p>
+If your statistical background is limited, you will benefit greatly
+from this course, which focuses on the logic of statistical analysis,
+using a practical, hands-on approach focusing on real-world
+applications in research.
+</p>
+
+<p>
+If you have had some of these topics before in previous courses, you
+will probably still benefit greatly from covering the same ground, in
+a different way. You will also learn to use R, which will serve you
+very well in the future.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline3" class="outline-2">
+<h2 id="orgheadline3">Potential list of topics</h2>
+<div class="outline-text-2" id="text-orgheadline3">
+<p>
+Here is a list of topics we could cover in the course. In the first
+few classes we will discuss which topics to cover, and make a
+collective decision based on the background and interests of the group
+this year.
+</p>
+
+<ul class="org-ul">
+<li>The Scientific Method &amp; Statistical Reasoning</li>
+<li>Null Hypothesis Significance Tests (NHST), Sampling Distributions and the T-test</li>
+<li>Single Factor Between Subjects Analysis of Variance (ANOVA)</li>
+<li>Multiple Comparisons, Type-I Error</li>
+<li>Two Factor and 3+ Factor ANOVA</li>
+<li>Analysis of Covariance (ANCOVA)</li>
+<li>Repeated-Measures (Within Subjects) ANOVA</li>
+<li>Mixed (Between / Within) ANOVA</li>
+<li>Multivariate ANOVA (MANOVA)</li>
+<li>Multiple Regression</li>
+<li>Principal Components Analysis (PCA)</li>
+<li>Maximum Likelihood Estimation (MLE)</li>
+<li>Logistic Regression</li>
+<li>Bootstrapping and Resampling Techniques</li>
+<li>Intro to Bayesian Approaches</li>
+<li>Bayes: Computing the Posterior Using Conjugate Priors</li>
+<li>Bayes: Computing the Posterior Using Grid Approximation</li>
+<li>Bayes: Computing the Posterior Using Markov Chain Monte Carlo (MCMC) Methods</li>
+<li>Machine Learning: clustering techniques</li>
+<li>Machine Learning: classification techniques</li>
+</ul>
+
+<p>
+There is always a balance to be struck between breadth (number of
+topics) and depth (level of detail), and given that this course is
+presently offered as a one-semester course, there are limits to what
+we can cover in sufficient detail. 
+</p>
+
+<p>
+We will start out by considering the introductory topics in some
+detail, and then we will go on to the more advanced topics, with less
+detail, at least in class. You should explore topics that are relevant
+to your own work in as much detail as you deem necessary, even if we
+don't have time in class.
+</p>
+
+<p>
+At the beginning of the semester we will talk about potential topics
+and decide on a selection that best suits the class.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4">Location and Time</h2>
+<div class="outline-text-2" id="text-orgheadline4">
+<ul class="org-ul">
+<li>Mondays &amp; Wednesdays, 1:30&#x2013;2:30pm in PAB 150</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5">Textbook &amp; Readings</h2>
+<div class="outline-text-2" id="text-orgheadline5">
+<p>
+There is one <b>mandatory</b> textbook in this course. The Maxwell &amp;
+Delaney book is a large book and very extensive, but I'm serious when
+I say that I want you to do your best to read each section that is
+assigned. You are taking a graduate course in statistics, and you have
+a unique opportunity to dedicate a block of time each week to
+consolidating the knowledge you already have, and to learn new things
+about statistical analyses of data.
+</p>
+
+<p>
+Some material from the Maxwell &amp; Delaney book will be provided on the
+course webpage.
+</p>
+
+<p>
+We will cover the initial set of core topics using the approach taken
+in Maxwell &amp; Delaney:
+</p>
+</div>
+
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">Mandatory Textbook</h3>
+<div class="outline-text-3" id="text-orgheadline6">
+<ul class="org-ul">
+<li>Designing Experiments and Analysing Data: A Model Comparison
+Perspective (2nd Edition) by Scott E. Maxwell &amp; Harold
+D. Delaney. Lawrence Erlbaum Associates (2003). ISBN: 0805837183<br  />
+[ <a href="http://www.amazon.com/dp/0805837183">buy it at amazon.com</a> ]</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline7" class="outline-3">
+<h3 id="orgheadline7">Recommended Books</h3>
+<div class="outline-text-3" id="text-orgheadline7">
+<p>
+The Keppel book is not mandatory but I would encourage you all to
+acquire this book as well. It is a very good statistics text that
+emphasizes computational formulae:
+</p>
+
+<ul class="org-ul">
+<li>Design and Analysis: A Researcher's Handbook (4th Ed.) by Geoffrey
+Keppel. Prentice Hall (2004).<br  />
+ISBN: 0135159415</li>
+</ul>
+
+<p>
+There are many books on R, here is a decent one aimed at beginner users:
+</p>
+
+<ul class="org-ul">
+<li>A Beginner's Guide to R by Zuur, Ieno &amp; Meesters. Springer
+(2009). ISBN: 9780387938363<br  />
+[ <a href="http://www.amazon.com/dp/0387938362">buy it at amazon.com</a> ] [ <a href="http://www.springerlink.com/content/978-0-387-93836-3">read it online</a> ] [ <a href="http://www.highstat.com/book3.htm">code &amp; data</a> ]</li>
+</ul>
+
+<p>
+We will also be using a new texbook by Hadley Wickham &amp; Garrett
+Grolemund called <a href="http://r4ds.had.co.nz">R for Data Science</a>. You can buy a hardcopy from
+Amazon but you can also view the entire book in html, using the above
+link. The book is a good introduction to using R for data analysis and
+visualization, and in particular we will be using it to learn about
+data wrangling (loading in, and manipulating data) and data plotting
+(using ggplot2).
+</p>
+
+<p>
+Other selected readings will be assigned as appropriate for the topic
+each week.
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline8" class="outline-2">
+<h2 id="orgheadline8">Software</h2>
+<div class="outline-text-2" id="text-orgheadline8">
+<p>
+R is a sophisticated package for graphical and exploratory data
+analysis, and is a powerful statistical programming language. R can be
+downloaded for free for Windows, Macintosh, Linux, and Unix operating
+systems from <a href="https://www.r-project.org"><a href="https://www.r-project.org">https://www.r-project.org</a></a>. The R manual is also available
+for free on the web. R code is platform-independent. R has extensive
+on-line help, and there are lots of other resources on-line for using
+R.
+</p>
+
+<p>
+RStudio is a free and open-source integrated development environment
+(IDE) for R. You can download it from <a href="https://www.rstudio.com"><a href="https://www.rstudio.com">https://www.rstudio.com</a></a>. I
+recommend you use it, although if you prefer you can use the plain R
+client above.
+</p>
+
+<p>
+Note that all of the code and data files that are referred to in the
+Zuur et al. (2009) text can be downloaded from
+<a href="http://www.highstat.com/book3.htm">http://www.highstat.com/book3.htm</a>
+</p>
+
+<p>
+It's likely that none of you will have used R before, although some of
+you may have used other statistical software packages (like SPSS), or
+spreadsheet programs (like Excel) or even some numerical programming
+languages (like Matlab). A non-trivial aspect of the work involved in
+this course will be learning how to use R. There is a certain learning
+curve involved with starting to program in any language. Once you
+conquer that initial stage, your productivity will grow exponentially.
+</p>
+
+<p>
+R is available for Macintosh OS X, Linux, and Windows. I have
+experience with Mac OS X and with Linux. <i>I do not know anything about
+Microsoft Windows</i> (apart from knowing that I don't want to use
+it). If you choose to use Windows, my ability to help you troubleshoot
+issues with software will be extremely limited. If you want to try
+Linux without erasing your Windows partition, a good solution is to
+use virtualization software such as <a href="http://www.vmware.com/">VMware</a> or <a href="http://www.virtualbox.org/">VirtualBox</a>, and install
+Linux (e.g. <a href="http://www.ubuntu.com">Ubuntu</a>) on a virtual machine image.
+</p>
+</div>
+
+<div id="outline-container-orgheadline9" class="outline-3">
+<h3 id="orgheadline9">Some useful R links</h3>
+<div class="outline-text-3" id="text-orgheadline9">
+<ul class="org-ul">
+<li><a href="http://www.r-project.org">The R Project for Statistical Computing</a></li>
+<li><a href="http://www.r-bloggers.com/why-use-r/">Why use R?</a></li>
+<li><a href="http://www.personality-project.org/r/r.guide.html">Using R for Psychological Research</a></li>
+<li><a href="http://www.statmethods.net/index.html">Quick-R for SAS/SPSS/Stata Users</a></li>
+<li><a href="http://myowelt.blogspot.com/2008/05/obtaining-same-anova-results-in-r-as-in.html">R, ANOVA and type-II vs type-III Sums of Squares</a></li>
+<li><a href="http://cran.r-project.org/doc/contrib/R-and-octave.txt">R for Octave/Matlab Users</a></li>
+<li><a href="http://mathesaurus.sourceforge.net/octave-r.html">R for Matlab Users</a></li>
+<li><a href="http://mathesaurus.sourceforge.net/matlab-python-xref.pdf">Matlab/Python/R Cheat Sheet</a></li>
+<li><a href="http://www.rstudio.com">RStudio</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgheadline10" class="outline-2">
+<h2 id="orgheadline10">Laptops</h2>
+<div class="outline-text-2" id="text-orgheadline10">
+<p>
+Bring a laptop to class, so that you can try things out in R as you
+see them.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline11" class="outline-2">
+<h2 id="orgheadline11">Grades &amp; Course Requirements</h2>
+<div class="outline-text-2" id="text-orgheadline11">
+<ul class="org-ul">
+<li>100% assignments</li>
+<li>no exams or tests</li>
+</ul>
+
+<p>
+The requirement for this course is simple: work diligently. This
+includes attending class, doing the readings carefully before the
+seminar meets, reading beyond the syllabus, working regularly on the
+problem sets, practicing using statistical software, and coming to see
+me for extra help, as needed. You will spend many hours learning and
+using R to implement the concepts discussed in class. Because you each
+have different backgrounds and interests, the amount of time necessary
+to master the material will vary. That being said, I am confident that
+with concerted effort each one of you can learn the material.
+</p>
+
+<p>
+One important thing to realize: We will not have enough time in the
+classes to go over the details of every concept covered in the
+course. In class I will highlight the major ideas and provide a
+conceptual roadmap for you to navigate through the material. You will
+be responsible for reading the material in the textbooks on your own
+and asking questions if you need more guidance. Just because I didn't
+say it out loud in class doesn't mean you're not responsible for
+it. Pay attention to the readings assigned for each week and do them
+in advance of class, not afterwards.
+</p>
+
+<p>
+There is no doubt, there is a lot of reading assigned in this
+course. Remember, you are a full time graduate student, your full time
+job is to learn. Do the readings, they are a requirement of the
+course.
+</p>
+
+<p>
+Feel free to work together on the assignments. Just do not hand in a
+document to me that is identical to someone else's. Also note that you
+won't learn nearly as much if you simply copy someone else's work. You
+will get the most out of this course if you work through the problem
+sets on your own. Your goal here should not be to get a high
+grade. Your goal should be to learn as much as you can.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline12" class="outline-2">
+<h2 id="orgheadline12">Some Final Words</h2>
+<div class="outline-text-2" id="text-orgheadline12">
+<p>
+Statistics (I have sometimes heard it called Sadistics) has a
+reputation as a difficult topic, and one that depends on an
+extraordinary mathematical or arithmetic ability. It's my hope that I
+can convince you otherwise by the end of this course. Statistics is
+often taught in a cookbook fashion, whereby you learn a series of
+recipies that are often tied to particular software packages
+(e.g. SPSS). Quite often you are evaluated (e.g. in exams or
+assignments) based on your ability to recall memorized recipes and
+equations, and / or to produce accurate arithmetic calculations. You
+might even earn high grades in these courses, not because you
+understand anything about statistics per se, but because you have
+learned how to regurgitate statistical recipes and use a calculator.
+</p>
+
+<p>
+Statistics, at its core, is not about calculation. Rather statistics
+(at least the statistics we cover in this course) is a <i>logical
+framework for interpreting data</i>. The key is to understand the <i>logic</i>
+of statistical procedures. What I would like to drive home for you is
+that an understanding of the logic behind statistics will empower you
+in your future scientific endeavors. You will be able to incorporate
+new statistical analyses into your own work, even if you haven't
+formally learned about them before, because you will find that you
+have insight into the fundamental logic behind them.
+</p>
+
+<p>
+It's a cliche, but it's like the difference between being a cook and
+being a chef. As a cook you know how to follow particular recipies but
+you have little ability to flexibly adapt recipes for novel
+situations, and you have little facility for developing your own new
+recipies. As a chef you understand a core set of basic principles that
+allows you to succeed in new environments by being creative (note that
+being creative does not mean breaking rules, per se, but understanding
+the ways in which you have flexibility, within the rules).
+</p>
+
+<p>
+Being able to carry out statistical analyses of course depends on
+computation, ultimately, but the <i>implementation</i> should be
+independent of the statistical logic itself. In this course we will
+focus largely on the logic of the statistical procedures we
+cover. There will be a practical aspect as well, as we learn to use R
+to implement statistical analyses &#x2026; but as you will see, R is built
+on an extensive core of statistical smarts so that as a user, you
+won't have to do much actual calculation yourself.
+</p>
+
+<p>
+There is some degree of recipe-learning in any statistical software
+package, whether it's SPSS or SAS or STATA or MATLAB or Python or
+R&#x2014;but we will devote most of our time to talking about the logic
+behind each procedure.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline13" class="outline-2">
+<h2 id="orgheadline13">My Role and Your Role</h2>
+<div class="outline-text-2" id="text-orgheadline13">
+<p>
+My goal as instructor of this course is to <i>maximize your opportunity
+to learn</i> both the fundamental logic and reason behind statistics, and
+some practical tools (using R) for carrying out statistical analyses
+and presenting data graphically. This is <b>not</b> an undergraduate-style
+lecture course in which you can succeed by sitting back and memorizing
+what I say. What you ultimately get out of this course depends, in the
+end, on the efforts you put in to exploring the theoretical and
+practical components of the course. I'm not going to tell you
+everything you need to know. My role is more like a tour-guide,
+showing you interesting topics and avenues that you will explore on
+your own.
+</p>
+
+<p>
+I am more than happy to spend some extra time with you going over
+material and clarifying concepts that may be difficult to understand
+at first. Often hearing something said in a new and different way will
+help you gain a better understanding. I don't have formal office
+hours; send me an email and we can schedule a time to meet. If there
+is a clear need to go over material as a class, I am happy to arrange
+extra tutorial sessions.
+</p>
+
+<p>
+One of the challenges of a course like this is that each of you comes
+to class with a different set of background skills and experiences
+with statistics, with programming and with math. We will try to talk
+about the ideas in such a way that it doesn't leave the beginners
+behind, and at the same time it doesn't bore the life out of students
+with more experience. Having said that, each of you has a
+responsibility to take charge of your own experience. If you are
+someone with less background and experience with these concepts, then
+it is up to you to do the extra work to bring yourself up to
+speed. You will find that this is not an uncommon feature of being a
+researcher&#x2014;namely pulling yourself up by the boot-straps to learn
+something new. I do it all the time and I'm old (!). For those of you
+with more experience, it will be your responsibility to go the extra
+mile, to dive deeper into the concepts that we touch on in class, to
+learn the more advanced concepts and techniques. To put it bluntly, if
+you're bored, then it's your responsibility to fix that problem. I'll
+show you around the new neighborhoods but it's up to you to open the
+doors, turn the corners and explore new avenues.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgheadline14" class="outline-2">
+<h2 id="orgheadline14">Contact Info</h2>
+<div class="outline-text-2" id="text-orgheadline14">
+<ul class="org-ul">
+<li>no formal office hours</li>
+<li>contact me by email: paul [at] gribblelab [dot] org</li>
+<li>NSC 228 (Office)</li>
+<li>NSC 245G (Lab)</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<hr />Paul Gribble | Winter 2017<br>This <span xmlns:dct="http://purl.org/dc/terms/" href="http://purl.org/dc/dcmitype/Text" rel="dct:type">work</span> is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a><br><a rel="license"href="http://creativecommons.org/licenses/by/4.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/4.0/80x15.png" /></a><br />
+</div>
+</body>
+</html>

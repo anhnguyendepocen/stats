@@ -1,0 +1,59 @@
+#+STARTUP: showall
+
+#+TITLE:     Introduction to Statistics Using R
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      Winter, 2017
+#+OPTIONS: toc:nil
+#+HTML_LINK_UP: http://www.gribblelab.org/teaching.html
+#+HTML_LINK_HOME: http://www.gribblelab.org/index.html
+
+#+HTML: &nbsp;
+
+* Administrivia
+
+- Course number: *Psychology 9041B*
+- Instructor: Paul Gribble
+- email: paul [at] gribblelab [dot] org
+- office: NSC 228
+- lab: NSC 245G
+- Course TA: 
+- class schedule: *Mondays & Wednesdays, 1:30pm--2:30pm*
+- class location: *PAB 150*
+- first class: Monday January 9, 2017
+- course website: http://www.gribblelab.org
+
+* Install R and RStudio
+
+- https://www.r-project.org
+- https://www.rstudio.com
+
+* Assignments
+
+- Please submit all assignments using OWL: https://owl.uwo.ca
+- Grading scheme:
+  - *0*: did not submit
+  - *1*: major corrections
+  - *2*: minor corrections
+  - *3*: no corrections
+
+* Schedule
+
+#+ATTR_HTML: :border 2 :rules all :frame border 
+|-----+--------+--------------+------------|
+| Day | Date   | Topic        | Assignment |
+| <c> | <c>    | <l>          | <c>        |
+|-----+--------+--------------+------------|
+| Mon | Jan 9  | [[file:Introduction.html][Introduction]] |            |
+| Wed | Jan 11 | tba          |            |
+|-----+--------+--------------+------------|
+| Mon | Jan 16 | tba          |            |
+| Wed | Jan 18 | tba          |            |
+|-----+--------+--------------+------------|
+
+
+** Ideas?
+
+Do you have ideas about how to improve this course? Please get in
+touch, send me an email at *paul [at] gribblelab [dot] org*
+
