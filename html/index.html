@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2016-12-28 Wed 11:41 -->
+<!-- 2016-12-29 Thu 12:47 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="viewport" content="width=device-width, initial-scale=1" />
 <title>Introduction to Statistics Using R</title>
@@ -141,6 +141,28 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="org-div-home-and-up">
@@ -170,18 +192,43 @@ for the JavaScript code in this tag.
 </div>
 
 <div id="outline-container-orgheadline2" class="outline-2">
-<h2 id="orgheadline2">Install R and RStudio</h2>
+<h2 id="orgheadline2">Software</h2>
 <div class="outline-text-2" id="text-orgheadline2">
 <ul class="org-ul">
 <li><a href="https://www.r-project.org">https://www.r-project.org</a></li>
 <li><a href="https://www.rstudio.com">https://www.rstudio.com</a></li>
+<li><a href="http://ggplot2.org">ggplot2</a>: a plotting system for R, based on the grammar of graphics</li>
+<li><a href="https://www.datacamp.com/courses/dplyr-data-manipulation-r-tutorial">Data Manipulation in R with dplyr</a></li>
 </ul>
 </div>
 </div>
 
 <div id="outline-container-orgheadline3" class="outline-2">
-<h2 id="orgheadline3">Assignments</h2>
+<h2 id="orgheadline3">Hardware</h2>
 <div class="outline-text-2" id="text-orgheadline3">
+<ul class="org-ul">
+<li><b>Designing Experiments and Analysing Data: A Model Comparison
+Perspective</b> (2nd Edition) by Scott E. Maxwell &amp; Harold
+D. Delaney. Lawrence Erlbaum Associates (2003). ISBN: 0805837183 [
+<a href="http://www.amazon.com/dp/0805837183">buy it at amazon.com</a> ]</li>
+
+<li><b>Design and Analysis: A Researcher's Handbook</b> (4th Ed.) by Geoffrey
+Keppel. Prentice Hall (2004).  ISBN: 0135159415</li>
+
+<li><b>A Beginner's Guide to R</b> by Zuur, Ieno &amp; Meesters. Springer
+(2009)\\ISBN: 9780387938363 [ <a href="http://www.amazon.com/dp/0387938362">buy it at amazon.com</a> ] [ <a href="http://www.springerlink.com/content/978-0-387-93836-3">read it
+online</a> ] [ <a href="http://www.highstat.com/book3.htm">code &amp; data</a> ]</li>
+
+<li><b>R for Data Science</b> by Hadley Wickham &amp; Garrett Grolemund. O'Reilly
+(2017)\\ISBN: 978-1491910399 [ <a href="https://www.amazon.com/dp/1491910399">buy it at amazon.com</a> ] [ <a href="http://r4ds.had.co.nz">read it
+online</a> ]</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-orgheadline4" class="outline-2">
+<h2 id="orgheadline4">Assignments</h2>
+<div class="outline-text-2" id="text-orgheadline4">
 <ul class="org-ul">
 <li>Please submit all assignments using OWL: <a href="https://owl.uwo.ca">https://owl.uwo.ca</a></li>
 <li>Grading scheme:
@@ -195,9 +242,9 @@ for the JavaScript code in this tag.
 </div>
 </div>
 
-<div id="outline-container-orgheadline4" class="outline-2">
-<h2 id="orgheadline4">Schedule</h2>
-<div class="outline-text-2" id="text-orgheadline4">
+<div id="outline-container-orgheadline5" class="outline-2">
+<h2 id="orgheadline5">Schedule</h2>
+<div class="outline-text-2" id="text-orgheadline5">
 <table border="2" cellspacing="0" cellpadding="6" rules="all" frame="border">
 
 
@@ -252,9 +299,9 @@ for the JavaScript code in this tag.
 </div>
 
 
-<div id="outline-container-orgheadline5" class="outline-3">
-<h3 id="orgheadline5">Ideas?</h3>
-<div class="outline-text-3" id="text-orgheadline5">
+<div id="outline-container-orgheadline6" class="outline-3">
+<h3 id="orgheadline6">Ideas?</h3>
+<div class="outline-text-3" id="text-orgheadline6">
 <p>
 Do you have ideas about how to improve this course? Please get in
 touch, send me an email at <b>paul [at] gribblelab [dot] org</b>
