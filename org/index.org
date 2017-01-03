@@ -17,7 +17,7 @@
 - email: paul [at] gribblelab [dot] org
 - office: NSC 228
 - lab: NSC 245G
-- Course TA: 
+- Course TA: Andrew Vo (avo6 [at] uwo [dot] ca)
 - class schedule: *Mondays & Wednesdays, 1:30pm--2:30pm*
 - class location: *PAB 150*
 - first class: Monday January 9, 2017
