@@ -29,6 +29,7 @@
 - https://www.rstudio.com
 - [[http://ggplot2.org][ggplot2]]: a plotting system for R, based on the grammar of graphics
 - [[https://www.datacamp.com/courses/dplyr-data-manipulation-r-tutorial][Data Manipulation in R with dplyr]]
+- Getting started with [[http://rmarkdown.rstudio.com/lesson-1.html][RMarkdown]]
 
 * Hardware
 
