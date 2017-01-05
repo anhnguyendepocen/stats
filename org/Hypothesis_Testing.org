@@ -25,6 +25,6 @@
 
 * Notes
 
-- [[file:notes/Hypothesis_Testing.pdf][Hypothesis_Testing.pdf]]
+- [[file:notes/Hypothesis_Testing.nb.html][Hypothesis Testing]]
 
 
