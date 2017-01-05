@@ -68,7 +68,7 @@
 | Mon | Jan 9  | [[file:Introduction.html][Introduction]]                 |            |
 | Wed | Jan 11 | [[file:Probability.html][Probability]]                  |            |
 |-----+--------+------------------------------+------------|
-| Mon | Jan 16 | [[file:Hypothesis_Testing.html][Hypothesis_Testing]]           |            |
+| Mon | Jan 16 | [[file:Hypothesis_Testing.html][Hypothesis Testing]]           |            |
 | Wed | Jan 18 | tba                          |            |
 |-----+--------+------------------------------+------------|
 | Mon | Jan 23 | [[file:One_Way_ANOVA.html][One Way ANOVA]]                |            |
