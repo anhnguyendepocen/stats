@@ -61,16 +61,16 @@
 * Schedule
 
 #+ATTR_HTML: :border 2 :rules all :frame border 
-|-----+--------+--------------+------------|
-| Day | Date   | Topic        | Assignment |
-| <c> | <c>    | <l>          | <c>        |
-|-----+--------+--------------+------------|
-| Mon | Jan 9  | [[file:Introduction.html][Introduction]] |            |
-| Wed | Jan 11 | tba          |            |
-|-----+--------+--------------+------------|
-| Mon | Jan 16 | tba          |            |
-| Wed | Jan 18 | tba          |            |
-|-----+--------+--------------+------------|
+|-----+--------+--------------------+------------|
+| Day | Date   | Topic              | Assignment |
+| <c> | <c>    | <l>                | <c>        |
+|-----+--------+--------------------+------------|
+| Mon | Jan 9  | [[file:Introduction.html][Introduction]]       |            |
+| Wed | Jan 11 | [[file:Probability.html][Probability]]        |            |
+|-----+--------+--------------------+------------|
+| Mon | Jan 16 | [[file:Hypothesis_Testing.html][Hypothesis_Testing]] |            |
+| Wed | Jan 18 | tba                |            |
+|-----+--------+--------------------+------------|
 
 
 ** Ideas?

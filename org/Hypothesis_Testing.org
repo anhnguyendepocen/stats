@@ -1,0 +1,30 @@
+#+STARTUP: showall
+
+#+TITLE:     Hypothesis Testing
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      Winter 2017
+#+OPTIONS: toc:nil html:t num:nil
+#+HTML_LINK_UP: http://www.gribblelab.org/stats/index.html
+#+HTML_LINK_HOME: http://www.gribblelab.org/stats/index.html
+#+LANGUAGE:  en
+#+OPTIONS:   num:nil toc:nil TeX:t LaTeX:t
+#+BABEL:     :session *R*
+
+* Slides
+
+- [[file:slides/Sampling_Distributions_and_Probability.pdf][Sampling_Distributions_and_Probability.pdf]]
+
+* Readings
+
+- McCall [[file:readings/MC3.pdf][Chapter 3]], [[file:readings/MC7.pdf][Chapter 7]], [[file:readings/MCt.pdf][Tables]]
+- [[file:readings/Nuzzo_2014_Nature.pdf][Nuzzo (2014)]]
+- [[file:readings/Simmons_2011_Psychol_Sci.pdf][Simmons (2011)]]
+- [[file:readings/GelmanLoken2014.pdf][Gelman (2014)]]
+- [[http://daniellakens.blogspot.nl/2015/01/always-use-welchs-t-test-instead-of.html][Lakens blog post]]
+
+* Notes
+
+- [[file:notes/Hypothesis_Testing.pdf][Hypothesis_Testing.pdf]]
+
+

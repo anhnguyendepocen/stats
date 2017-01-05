@@ -1,0 +1,92 @@
+#+STARTUP: showall
+
+#+TITLE:     Probability
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      Winter 2017
+#+OPTIONS: toc:nil html:t num:nil
+#+HTML_LINK_UP: http://www.gribblelab.org/stats/index.html
+#+HTML_LINK_HOME: http://www.gribblelab.org/stats/index.html
+#+LANGUAGE:  en
+#+OPTIONS:   num:nil toc:nil TeX:t LaTeX:t
+#+BABEL:     :session *R*
+
+* Slides
+
+- [[file:slides/Probability.pdf][Probability.pdf]]
+
+* Readings
+
+- Maxwell & Delaney, [[file:readings/MD2.pdf][Chapter 2]]
+
+* Notes
+
+Assume we present Mr. Espressohead with 8 cups of coffee (lattes,
+actually). We tell him that 4 are made with Illy beans and the other 4
+are made with Lavazza beans. His task is to taste all 8 and then
+divide the 8 cups into 4 Illy and 4 Lavazza.
+
+The null hypothesis is that he is guessing. Our task then is to
+determine what is the probability of a given outcome, given the null
+hypothesis $H_{0}$.
+
+Let's compute the probability that he could pick the correct 4 Illy
+cups (and by thus the correct 4 Lavazza cups) just by guessing.
+
+The probability of a correct outcome is defined by the ratio
+$N_{c}/N_{t}$ where $N_{c}$ is the number of correct ways of dividing
+up the cups, and $N_{t}$ is the total number of ways (whether they are
+correct or not) of dividing up the cups.
+
+Only one division of the cups is correct, so the numerator of the
+ratio $N_{c}=1$.
+
+The denominator is equal to the total number of ways of dividing 8
+cups into two groups of 4. This is equivalent to the number of ways of
+choosing 4 Illy cups out of 8 (since then the other 4 will be
+determined as Lavazza cups).
+
+In general, the number of ways of choosing $k$ things out of a
+possible set of $n$ (irrespective of the order) is given by the
+following equation, known as "n choose k":
+
+\begin{equation}
+{n \choose k} = \frac{n!}{k!(n-k)!}
+\end{equation}
+
+where in general, the factorial operator $x!$ = $(x)(x-1)(x-2) \dots (1)$.
+
+In *R* we can use the =choose(n,k)= function:
+
+#+BEGIN_SRC R :results output :exports both :session me
+Ntot = choose(8,4)
+print(Ntot)
+#+END_SRC
+
+So the our denominator is 70, and the ratio $N_{c}/N_{t}$ defining the
+probability of choosing the correct configuration just by guessing,
+equals 0.014.
+
+#+BEGIN_SRC R :results output :exports both :session me
+guess_prob <- 1/Ntot
+print(guess_prob)
+#+END_SRC
+
+Thus there is a 1.4 % chance that he could get them all correct, just
+by guessing.
+
+Is that low enough? If you did observe him getting them all correct,
+would you believe he has the ability? Or would you still think he
+could be guessing?
+
+An important lesson to learn in frequentist inferential statistics is
+that we can *never* prove the alternate hypothesis ($H_{1}$, that he
+is not guessing, i.e. that he has the ability). All we can ever say is
+that the probability of the null hypothesis $H_{0}$ is very low. All
+we can ever say is that it's very unlikely that he is guessing.
+
+We could still be wrong however. Even if there were an experiment
+where the probability of $H_{0}$ was exceedingly low (e.g. $p <
+0.001$) or 1 in 1,000, there is still a non-zero chance that one could
+observe that outcome, under the null hypothesis. All we can say is
+that this is unlikely.
