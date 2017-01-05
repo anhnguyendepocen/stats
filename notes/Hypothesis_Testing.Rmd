@@ -1,6 +1,8 @@
 ---
 title: "Hypothesis Testing"
-output: html_notebook
+output:
+  html_document: default
+  html_notebook: default
 ---
 
 ## Sampling Distributions & t-tests
