@@ -31,7 +31,7 @@
 - [[http://ggplot2.org][ggplot2]]: a plotting system for R, based on the grammar of graphics
 - [[https://www.datacamp.com/courses/dplyr-data-manipulation-r-tutorial][Data Manipulation in R with dplyr]]
 
-* Hardware
+* Books
 
 - *Designing Experiments and Analysing Data: A Model Comparison
   Perspective* (2nd Edition) by Scott E. Maxwell & Harold
@@ -45,9 +45,14 @@
   (2009)\\ISBN: 9780387938363 [ [[http://www.amazon.com/dp/0387938362][buy it at amazon.com]] ] [ [[http://www.springerlink.com/content/978-0-387-93836-3][read it
   online]] ] [ [[http://www.highstat.com/book3.htm][code & data]] ]
 
--  *R for Data Science* by Hadley Wickham & Garrett Grolemund. O'Reilly
-  (2017)\\ISBN: 978-1491910399 [ [[https://www.amazon.com/dp/1491910399][buy it at amazon.com]] ] [ [[http://r4ds.had.co.nz][read it
-  online]] ]
+* Online Resources
+
+- from [[https://software-carpentry.org/lessons/][Software Carpentry]]:
+  - [[http://swcarpentry.github.io/r-novice-inflammation/][Programming with R]]
+  - [[http://swcarpentry.github.io/r-novice-gapminder/][R For Reproducible Scientific Analysis]] (RStudio, dplyr, and ggplot2 lessons here)
+-  *R for Data Science* by Hadley Wickham & Garrett
+  Grolemund. O'Reilly (2017)\\ISBN: 978-1491910399 [ [[https://www.amazon.com/dp/1491910399][buy it at
+  amazon.com]] ] [ [[http://r4ds.had.co.nz][read it online]] ]
 
 * Assignments
 

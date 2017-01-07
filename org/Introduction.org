@@ -128,7 +128,7 @@ There are many books on R, here is a decent one aimed at beginner users:
   (2009). ISBN: 9780387938363\\
   [ [[http://www.amazon.com/dp/0387938362][buy it at amazon.com]] ] [ [[http://www.springerlink.com/content/978-0-387-93836-3][read it online]] ] [ [[http://www.highstat.com/book3.htm][code & data]] ]
 
-We will also be using a new texbook by Hadley Wickham & Garrett
+Another useful text is a new book by Hadley Wickham & Garrett
 Grolemund called [[http://r4ds.had.co.nz][R for Data Science]]. You can buy a hardcopy from
 Amazon but you can also view the entire book in html, using the above
 link. The book is a good introduction to using R for data analysis and
@@ -136,8 +136,20 @@ visualization, and in particular we will be using it to learn about
 data wrangling (loading in, and manipulating data) and data plotting
 (using ggplot2).
 
+Finally, the excellent organization called [[https://software-carpentry.org/lessons/][Software Carpentry]]
+publishes two lessons/tutorials that are relevant for us:
+
+- [[http://swcarpentry.github.io/r-novice-inflammation/][Programming with R]], a general introduction to the R language
+- [[http://swcarpentry.github.io/r-novice-gapminder/][R For Reproducible Scientific Analysis]] (lessons on RStudio, dplyr, and ggplot2, among other things)
+
 Other selected readings will be assigned as appropriate for the topic
 each week.
+
+Depending on your own personal background and experience with
+programming, with statistics, and with R, you may need to use more, or
+less, of these resources. Part of your job as a student in this course
+is to identify and seek out the knowledge that you need. This will be
+different for everyone.
 
 * Software
 
@@ -170,10 +182,7 @@ R is available for Macintosh OS X, Linux, and Windows. I have
 experience with Mac OS X and with Linux. /I do not know anything about
 Microsoft Windows/ (apart from knowing that I don't want to use
 it). If you choose to use Windows, my ability to help you troubleshoot
-issues with software will be extremely limited. If you want to try
-Linux without erasing your Windows partition, a good solution is to
-use virtualization software such as [[http://www.vmware.com/][VMware]] or [[http://www.virtualbox.org/][VirtualBox]], and install
-Linux (e.g. [[http://www.ubuntu.com][Ubuntu]]) on a virtual machine image.
+issues with software will be extremely limited. 
 
 ** Some useful R links
 
@@ -181,7 +190,7 @@ Linux (e.g. [[http://www.ubuntu.com][Ubuntu]]) on a virtual machine image.
 - [[http://www.r-bloggers.com/why-use-r/][Why use R?]]
 - [[http://www.personality-project.org/r/r.guide.html][Using R for Psychological Research]]
 - [[http://www.statmethods.net/index.html][Quick-R for SAS/SPSS/Stata Users]]
-- [[http://myowelt.blogspot.com/2008/05/obtaining-same-anova-results-in-r-as-in.html][R, ANOVA and type-II vs type-III Sums of Squares]]
+- [[https://mcfromnz.wordpress.com/2011/03/02/anova-type-iiiiii-ss-explained/][ANOVA Type-I/II/III SS explained]]
 - [[http://cran.r-project.org/doc/contrib/R-and-octave.txt][R for Octave/Matlab Users]]
 - [[http://mathesaurus.sourceforge.net/octave-r.html][R for Matlab Users]]
 - [[http://mathesaurus.sourceforge.net/matlab-python-xref.pdf][Matlab/Python/R Cheat Sheet]]
