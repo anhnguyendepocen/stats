@@ -51,7 +51,7 @@
   - [[http://swcarpentry.github.io/r-novice-inflammation/][Programming with R]]
   - [[http://swcarpentry.github.io/r-novice-gapminder/][R For Reproducible Scientific Analysis]] (RStudio, dplyr, and ggplot2 lessons here)
 -  *R for Data Science* by Hadley Wickham & Garrett
-  Grolemund. O'Reilly (2017)\\ISBN: 978-1491910399 [ [[https://www.amazon.com/dp/1491910399][buy it at
+  Grolemund. O'Reilly (2017). ISBN: 978-1491910399 [ [[https://www.amazon.com/dp/1491910399][buy it at
   amazon.com]] ] [ [[http://r4ds.had.co.nz][read it online]] ]
 
 * Assignments
