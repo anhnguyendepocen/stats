@@ -39,7 +39,7 @@
   Keppel. Prentice Hall (2004).  ISBN: 0135159415
 
 - *A Beginner's Guide to R* by Zuur, Ieno & Meesters. Springer
-  (2009)\\ISBN: 9780387938363 [ [[http://www.amazon.com/dp/0387938362][buy it at amazon.com]] ] [ [[http://www.springerlink.com/content/978-0-387-93836-3][read it
+  (2009). ISBN: 9780387938363 [ [[http://www.amazon.com/dp/0387938362][buy it at amazon.com]] ] [ [[http://www.springerlink.com/content/978-0-387-93836-3][read it
   online]] ] [ [[http://www.highstat.com/book3.htm][code & data]] ]
 
 -  *R for Data Science* by Hadley Wickham & Garrett
