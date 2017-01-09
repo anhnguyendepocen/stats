@@ -82,13 +82,13 @@
 | Wed | Jan 25 | R practical                                               |            |
 |-----+--------+-----------------------------------------------------------+------------|
 | Mon | Jan 30 | Multiple Comparisons & Statistical Power                  |            |
-| Wed | Feb 1  | no class---Paul away                                      |            |
+| Wed | Feb 1  | Paul away---R practical with Andrew                       |            |
 |-----+--------+-----------------------------------------------------------+------------|
-| Mon | Feb 6  | R practical                                               |            |
-| Wed | Feb 8  | 2 & 3-factor ANOVA                                        |            |
+| Mon | Feb 6  | 2 & 3-factor ANOVA                                        |            |
+| Wed | Feb 8  | R practical                                               |            |
 |-----+--------+-----------------------------------------------------------+------------|
-| Mon | Feb 13 | R practical                                               |            |
-| Wed | Feb 15 | Repeated Measures ANOVA & mixed designs                   |            |
+| Mon | Feb 13 | Repeated Measures ANOVA & mixed designs                   |            |
+| Wed | Feb 15 | R practical                                               |            |
 |-----+--------+-----------------------------------------------------------+------------|
 | Mon | Feb 20 | reading week---R practical (optional)                     |            |
 | Wed | Feb 22 | reading week---R practical (optional)                     |            |
