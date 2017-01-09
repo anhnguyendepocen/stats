@@ -122,7 +122,7 @@ plot(xr, pline, type="l", xlab="IQ", ylab="probability")
 lines(c(min(xr), max(xr)), c(0,0))
 lines(c(iq,iq), c(0,.03), col="red")
 hb <- max(which(xr<=iq))
-polygon(c(x[hb:xrl], rev(x[hb:xrl])), c(pline[hb:xrl], rep(0, xrl-hb+1)), col="red")
+polygon(c(xr[hb:xrl], rev(xr[hb:xrl])), c(pline[hb:xrl], rep(0, xrl-hb+1)), col="red")
 ```
 
 To determine the probability in R we can use the `pnorm()` command:
