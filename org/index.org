@@ -10,9 +10,56 @@
 
 #+HTML: &nbsp;
 
-* Administrivia
+* Schedule
 
-- Course number: *Psychology 9041B*
+#+ATTR_HTML: :border 2 :rules all :frame border 
+|-----+--------+-----------------------------------------------------------+------------|
+| Day | Date   | Topic                                                     | Assignment |
+| <c> | <c>    | <l>                                                       | <c>        |
+|-----+--------+-----------------------------------------------------------+------------|
+| Mon | Jan 9  | [[file:Introduction.html][Introduction]]                                              |            |
+| Wed | Jan 11 | [[file:Probability.html][Probability]]                                               |            |
+|-----+--------+-----------------------------------------------------------+------------|
+| Mon | Jan 16 | [[file:Hypothesis_Testing.html][Hypothesis Testing]]                                        |            |
+| Wed | Jan 18 | R practial                                                |            |
+|-----+--------+-----------------------------------------------------------+------------|
+| Mon | Jan 23 | [[file:One_Way_ANOVA.html][One Way ANOVA]]                                             |            |
+| Wed | Jan 25 | R practical                                               |            |
+|-----+--------+-----------------------------------------------------------+------------|
+| Mon | Jan 30 | Multiple Comparisons & Statistical Power                  |            |
+| Wed | Feb 1  | Paul away---R practical with Andrew                       |            |
+|-----+--------+-----------------------------------------------------------+------------|
+| Mon | Feb 6  | 2 & 3-factor ANOVA                                        |            |
+| Wed | Feb 8  | R practical                                               |            |
+|-----+--------+-----------------------------------------------------------+------------|
+| Mon | Feb 13 | Repeated Measures ANOVA & mixed designs                   |            |
+| Wed | Feb 15 | R practical                                               |            |
+|-----+--------+-----------------------------------------------------------+------------|
+| Mon | Feb 20 | reading week---R practical (optional)                     |            |
+| Wed | Feb 22 | reading week---R practical (optional)                     |            |
+|-----+--------+-----------------------------------------------------------+------------|
+| Mon | Feb 27 | Paul away---Q&A with Andrew (optional)                    |            |
+| Wed | Mar 1  | Paul away---Q&A with Andrew (optional)                    |            |
+|-----+--------+-----------------------------------------------------------+------------|
+| Mon | Mar 6  | Multiple Regression                                       |            |
+| Wed | Mar 8  | R practical                                               |            |
+|-----+--------+-----------------------------------------------------------+------------|
+| Mon | Mar 13 | Bootstrapping & Resampling                                |            |
+| Wed | Mar 15 | R pratical                                                |            |
+|-----+--------+-----------------------------------------------------------+------------|
+| Mon | Mar 20 | Maximum likelihood estimation (MLE) & logistic regression |            |
+| Wed | Mar 22 | R practical                                               |            |
+|-----+--------+-----------------------------------------------------------+------------|
+| Mon | Mar 27 | Bayesian approaches I                                     |            |
+| Wed | Mar 29 | R practical                                               |            |
+|-----+--------+-----------------------------------------------------------+------------|
+| Mon | Apr 3  | Bayesian approaches II                                    |            |
+| Wed | Apr 5  | R practical                                               |            |
+|-----+--------+-----------------------------------------------------------+------------|
+
+
+* Psychology 9041B
+
 - Instructor: Paul Gribble
 - email: paul [at] gribblelab [dot] org
 - office: NSC 228
@@ -64,53 +111,6 @@
   - *1*: major corrections
   - *2*: minor corrections
   - *3*: no corrections
-
-* Schedule
-
-#+ATTR_HTML: :border 2 :rules all :frame border 
-|-----+--------+-----------------------------------------------------------+------------|
-| Day | Date   | Topic                                                     | Assignment |
-| <c> | <c>    | <l>                                                       | <c>        |
-|-----+--------+-----------------------------------------------------------+------------|
-| Mon | Jan 9  | [[file:Introduction.html][Introduction]]                                              |            |
-| Wed | Jan 11 | [[file:Probability.html][Probability]]                                               |            |
-|-----+--------+-----------------------------------------------------------+------------|
-| Mon | Jan 16 | [[file:Hypothesis_Testing.html][Hypothesis Testing]]                                        |            |
-| Wed | Jan 18 | R practial                                                |            |
-|-----+--------+-----------------------------------------------------------+------------|
-| Mon | Jan 23 | [[file:One_Way_ANOVA.html][One Way ANOVA]]                                             |            |
-| Wed | Jan 25 | R practical                                               |            |
-|-----+--------+-----------------------------------------------------------+------------|
-| Mon | Jan 30 | Multiple Comparisons & Statistical Power                  |            |
-| Wed | Feb 1  | Paul away---R practical with Andrew                       |            |
-|-----+--------+-----------------------------------------------------------+------------|
-| Mon | Feb 6  | 2 & 3-factor ANOVA                                        |            |
-| Wed | Feb 8  | R practical                                               |            |
-|-----+--------+-----------------------------------------------------------+------------|
-| Mon | Feb 13 | Repeated Measures ANOVA & mixed designs                   |            |
-| Wed | Feb 15 | R practical                                               |            |
-|-----+--------+-----------------------------------------------------------+------------|
-| Mon | Feb 20 | reading week---R practical (optional)                     |            |
-| Wed | Feb 22 | reading week---R practical (optional)                     |            |
-|-----+--------+-----------------------------------------------------------+------------|
-| Mon | Feb 27 | Paul away---Q&A with Andrew (optional)                    |            |
-| Wed | Mar 1  | Paul away---Q&A with Andrew (optional)                    |            |
-|-----+--------+-----------------------------------------------------------+------------|
-| Mon | Mar 6  | Multiple Regression                                       |            |
-| Wed | Mar 8  | R practical                                               |            |
-|-----+--------+-----------------------------------------------------------+------------|
-| Mon | Mar 13 | Bootstrapping & Resampling                                |            |
-| Wed | Mar 15 | R pratical                                                |            |
-|-----+--------+-----------------------------------------------------------+------------|
-| Mon | Mar 20 | Maximum likelihood estimation (MLE) & logistic regression |            |
-| Wed | Mar 22 | R practical                                               |            |
-|-----+--------+-----------------------------------------------------------+------------|
-| Mon | Mar 27 | Bayesian approaches I                                     |            |
-| Wed | Mar 29 | R practical                                               |            |
-|-----+--------+-----------------------------------------------------------+------------|
-| Mon | Apr 3  | Bayesian approaches II                                    |            |
-| Wed | Apr 5  | R practical                                               |            |
-|-----+--------+-----------------------------------------------------------+------------|
 
 ** Ideas?
 
