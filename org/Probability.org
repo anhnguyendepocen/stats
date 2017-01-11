@@ -17,6 +17,7 @@
 
 * Readings
 
+- Maxwell & Delaney, [[file:readings/MD1.pdf][Chapter 1]]
 - Maxwell & Delaney, [[file:readings/MD2.pdf][Chapter 2]]
 
 * Notes
