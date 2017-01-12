@@ -95,6 +95,7 @@
 
 * Online Resources
 
+- [[http://swirlstats.com][swirl]]: teaches you basic R programming, right in the console
 - from [[https://software-carpentry.org/lessons/][Software Carpentry]]:
   - [[http://swcarpentry.github.io/r-novice-inflammation/][Programming with R]]
   - [[http://swcarpentry.github.io/r-novice-gapminder/][R For Reproducible Scientific Analysis]] (RStudio, dplyr, and ggplot2 lessons here)
