@@ -1,0 +1,139 @@
+\documentclass[10pt]{article}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{ifthen}
+\usepackage{epsfig}
+\usepackage{fancyvrb}
+\usepackage{url}
+\usepackage{fancyhdr}
+
+\usepackage{amsmath}
+\usepackage{mathspec}
+\usepackage{microtype}
+\setmainfont[
+    Numbers={Monospaced,OldStyle},
+    BoldFont={Guardian TextEgyp Medium},
+  ]{Guardian TextEgyp}\linespread{1.2}
+\setsansfont[BoldFont={Helvetica Neue Medium}]{Helvetica Neue}\linespread{1.2}
+\setmonofont{Monaco}\linespread{1.2}
+\setmathrm{Palatino}
+\setmathfont(Digits,Latin,Greek){Palatino}
+
+\tolerance=5000
+
+\usepackage[margin=1.0in,includeheadfoot]{geometry}
+
+\setlength{\skip\footins}{10mm}      % obsessing about footnote spacing
+
+\usepackage[compact,noindentafter]{titlesec}
+\titleformat*{\section}{\sffamily\large\bfseries}
+\titlespacing{\section}{0pt}{2ex}{1ex}
+\titleformat*{\subsection}{\sffamily\normalsize\bfseries}
+\titlespacing{\subsection}{0pt}{2ex}{0ex}
+
+\usepackage[iso]{datetime}
+\usdate
+
+% ------- CUSTOM TITLE FORMAT -------
+%
+\makeatletter
+\renewcommand{\maketitle}{
+\begin{flushleft}          % right align
+{\Large\sffamily\bfseries\@title}   % increase the font size of the title
+\vspace{2ex}\\            % vertical space between the title and author name
+{\normalsize\sffamily\@author}           % author name
+\vspace{0ex}\\             % vertical space between author name and date
+\normalsize\sffamily\@date                     % date
+\vspace{3ex}              % vertical space between the author block and abstract
+\end{flushleft}
+}
+% -----------------------------------
+
+
+\title{Assignment 1---Introduction to Statistics Using R}
+\author{Paul Gribble}
+\date{Winter, 2017}
+
+
+\begin{document}
+
+\maketitle
+
+\thispagestyle{empty}
+
+{\flushleft \sffamily * Due Friday Jan 27}
+
+\section{Hypothesis Testing}
+
+You are Dean of Science at Western (congratulations!). You have just
+met with one of the new Assistant Professors in the Department of
+Mathematics for his annual performance evaluation. Professor X claims
+that his salary is much too low and he wants you to give him a
+raise. He claims he is particularly good at teaching, and so he
+deserves a raise. As evidence of this, he provides a random sample of
+his teaching ratings. In his previous year, Professor X taught Section
+I of Calculus, and another Professor (with a higher salary) taught
+Section II. The students in Section I achieved the highest average
+grades on the final exam, which was common to both sections. Professor
+X provides you with the final grades of all 50 students in each of the
+two calculus
+sections~\footnote{\url{http://www.gribblelab.org/stats/data/calculus.csv}}.
+
+Table~\ref{calctable} shows mean grades for each of the two sections.
+
+\begin{table}[h]
+  \begin{center}
+    \begin{tabular}{|l|cc|}
+      \hline
+      Calculus Section &I &II\\
+      \hline
+      Mean Final Grade &78.9 &75.3\\
+      \hline
+    \end{tabular}
+    \caption{Final Calculus Grades}
+    \label{calctable}
+  \end{center}
+\end{table}
+
+There is no doubt that the average final grade in Section I is higher
+than it is for Section II. You are a natural skeptic however.
+
+\begin{enumerate}
+
+\item Articulate a null hypothesis in plain language.
+
+\item Calculate the probability of observing differences between
+  grades this large, under the null hypothesis. Show your work. Be
+  sure to consider whether this ought to be a one-tailed or a
+  two-tailed t-test.
+
+\item What assumptions do you have to make when performing your
+  analysis? If possible, test those assumptions. (hint:
+  \texttt{bartlett.test()} will test homogeneity of variances, and
+  \texttt{shapiro.test()} will test for normality.
+
+\item What will you conclude about Professor X's claim? Will you give
+  him a raise? Why or why not?
+
+\item For your future reference as Dean, determine the minimum
+  difference between mean grades that you would need to see in order
+  to reject the null hypothesis. Assume everything else stays the same
+  (variances, sample sizes, etc). Show your work. Hint: compute the
+  value of t needed for p=.05 given the degrees of freedom in the data
+  (use the R function \texttt{qt()}, then solve for the difference
+  between means that's required to produce that t value (using the
+  equation for t).
+
+
+\end{enumerate}
+
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

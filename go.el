@@ -59,7 +59,14 @@
 	 :publishing-function org-publish-attachment
 	 :recursive t
 	 )
-	("org" :components ("stats" "stats_html" "stats_code" "stats_data" "stats_images" "stats_slides" "stats_notes"))))
+	("stats_assignments"
+	 :base-directory "assignments/"
+	 :base-extension "tex\\|pdf"
+	 :publishing-directory "/ssh:plg@toro.ssc.uwo.ca:~/gribblelab.org/stats/assignments/"
+	 :publishing-function org-publish-attachment
+	 :recursive t
+	 )
+	("org" :components ("stats" "stats_html" "stats_code" "stats_data" "stats_images" "stats_slides" "stats_notes" "stats_assignments"))))
 
 (org-publish-project "stats")
 (org-publish-project "stats_html")
@@ -68,3 +75,4 @@
 (org-publish-project "stats_images")
 (org-publish-project "stats_slides")
 (org-publish-project "stats_notes")
+(org-publish-project "stats_assignments")

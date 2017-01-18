@@ -1,0 +1,155 @@
+---
+title: "R Practical Jan 18 2017"
+output:
+  html_document: default
+  html_notebook: default
+---
+
+# Loading in data
+
+## from your computer's file system
+
+Let's start by loading in the dataset associated with Assignment 1. The data can be downloaded to your computer from the course website using the following URL: 
+
+> http://www.gribblelab.org/stats/data/calculus.csv
+
+You could then load in the data file using the `read.table()` function in R:
+
+```{r, eval=FALSE}
+a01data <- read.table(file="calculus.csv", sep=",")
+```
+
+Just make sure that your current working directory in R is the same location as where you saved the calculus.csv file.
+
+Note that we pass the argument `sep=","` which tells R that the data points are separated in rows by a comma.
+
+The `read.table()` function in R loads in data and puts in into a **data frame**, which is a special type of R variable that is used to store tabular data. Think of it like a matrix, with some extra intelligence. For example in a data frame the columns (variables) can have alphanumeric strings as names. Also, each column can store a different data type. For example one column (variable) might store floating-point numbers, while another column might store levels of a factor.
+
+## from the internet
+
+In R, we can also load this into a data frame directly from the internet (assuming your computer has an active internet connection):
+
+```{r}
+url <- "http://www.gribblelab.org/stats/data/calculus.csv"
+a01data <- read.table(file=url, sep=",")
+```
+
+Let's show the first few rows of the data frame:
+
+```{r}
+head(a01data)
+```
+
+We can also get a summary:
+
+```{r}
+summary(a01data)
+```
+
+The `summary()` function in R gives us some basic descriptive statistics about each variable (each column) of the data frame.
+
+We can also compute these directly if we wish. For example to get the mean of the first column, we can use the `mean()` function in R, and index into the data frame using the `$` operator and using the alphanumeric name of the variable, `Sec1`:
+
+```{r}
+mean(a01data$Sec1)
+```
+
+We could if we want also index into the data using the variable's position in the data matrix:
+
+```{r}
+mean(a01data[,1])
+```
+
+Here we're saying give me all of the rows, and the first column, of the data matrix. But being able to index into the data using the alphanumeric name of the variable, rather than its position in the matrix, is much more readable.
+
+# Testing for normality
+
+One of the assumptions of a t-test is that the population data from which our sample was taken, are normally distributed. We can use the `shapiro.test()` function in R to test this:
+
+```{r}
+shapiro.test(a01data$Sec1)
+```
+
+```{r}
+shapiro.test(a01data$Sec2)
+```
+
+In both cases we see that the p-value is much greater than any reasonable alpha-level (like 0.05), and so we **fail to reject the null hypothesis**, the null hypothesis being that the data samples were taken from populations that are normally distributed. In other words, we don't have the statistical evidence to say that the populations from which the data were sampled are not normally distributed. In other words, we don't have any reason to believe we're violating the normality assumption of the t-test.
+
+Here we applied the `shapiro.test()` function to each variable in the data frame by hand. If we wanted to be a little more sophisticated, we could do this in one step, by using the `sapply()` function in R. The `sapply()` function takes data (usually a list or a vector, but a data frame will work too, as it will be considered as a list of variables) and a function, and applies the function to each element of the input:
+
+```{r}
+sapply(a01data, shapiro.test)
+```
+
+Note that we can pass the `sapply()` function any legal R function and it will apply it to each variable, for example `mean()`:
+
+```{r}
+sapply(a01data, mean)
+```
+
+# Homogeneity of Variance & Data munging
+
+Data munging refers to the need, sometimes, to rearrange data into a different form. To test the homogeneity of variance assumption of the t-test, we will use the `bartlett.test()` function in R, but this requires the data to be in a slightly different format than how it appears in the data frame above.
+
+Backing up a bit, what is the homogeneity of variance assumption of a t-test? It's the assumption that the samples we have were drawn from populations that have the same variance. The means can be different (this is what the t-test is interested in testing) but the variances are assumed to be the same.
+
+If we get the help on the `bartlett.test()` function:
+
+```{r, eval=FALSE}
+?bartlett.test
+```
+
+we see that the first two arguments, `x` and `g`, are supposed to be a vector of data values, and a vector of grouping variables. What we have presently in our `a01data` data frame is not this ... what we have is two lists of data. What we need is one vector of all data values (100 elements long) and a second vector indicating which group each data point in the first vector belongs to. Here's how we could do this:
+
+```{r}
+alldata <- c(a01data$Sec1, a01data$Sec2)
+```
+
+Here we've created a new variable called `alldata` that we've constructed using the `c()` function in R, which combines elements. We can see that it's 100 elements long:
+
+```{r}
+length(alldata)
+```
+
+Now we can create the grouping variable:
+
+```{r}
+group <- c(rep("I",50), rep("II",50))
+```
+
+We've used the `c()` function again to combine elements, but this time we're combining two 50-element vectors, each of which is constructed using the `rep()` function. The `rep()` function repeats an item a certain number of times. In this case we're repeating the string "I" 50 times, and the string "II" 50 times. We can see we end up with a 100-element vector:
+
+```{r}
+length(group)
+```
+
+Now presently the `group` variable is a character string. We can see this in the Environment window in the top-right of the RStudio GUI, or we can use the R function `typeof()` to directly query the type:
+
+```{r}
+typeof(group)
+```
+
+Instead of using a vector of characters, we should take advantage of R's special data type called `factor`. What we really want to encode in our `group` variable is that we are dealing with a factor called group, that has two levels: I and II. We can use the `factor()` function in R to transform our vector of character strings into a factor:
+
+```{r}
+group <- factor(group)
+```
+
+and we can see now that it's type `factor`:
+
+```{r}
+head(group)
+summary(group)
+typeof(group)
+```
+
+Now we're in a position to use the `bartlett.test()` using our newly created variables:
+
+```{r}
+bartlett.test(x=alldata, g=group)
+```
+
+and we see that the p-value is far above any reasonable alpha level (e.g. 0.05 or 0.01). This means we fail to reject the null hypothesis that the two samples were drawn from populations with the same variance. In other words we don't have the statistical evidence to say that the homogeneity of variance assumption was violated. In other words, we're OK to use the standard t-test.
+
+
