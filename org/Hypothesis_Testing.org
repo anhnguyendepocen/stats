@@ -22,6 +22,7 @@
 - [[file:readings/Simmons_2011_Psychol_Sci.pdf][Simmons (2011)]]
 - [[file:readings/GelmanLoken2014.pdf][Gelman (2014)]]
 - [[http://daniellakens.blogspot.nl/2015/01/always-use-welchs-t-test-instead-of.html][Lakens blog post]]
+- [[https://www.ascb.org/2016/2016-marchapril-newsletter/on-reproducibility-and-clocks/][On Reproducibility and Clocks]] By Peter Walter
 
 * Notes
 
