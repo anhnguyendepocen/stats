@@ -24,7 +24,7 @@
 | Wed | Jan 18 | [[file:notes/RPractical_20170118.html][R Practical]]                                               | [[file:assignments/A01.pdf][A01.pdf]]    |
 |-----+--------+-----------------------------------------------------------+------------|
 | Mon | Jan 23 | [[file:One_Way_ANOVA.html][One Way ANOVA]]                                             |            |
-| Wed | Jan 25 | R practical                                               |            |
+| Wed | Jan 25 | [[file:notes/RPractical_20170125.html][R Practical]]                                               |            |
 |-----+--------+-----------------------------------------------------------+------------|
 | Mon | Jan 30 | Multiple Comparisons & Statistical Power                  |            |
 | Wed | Feb 1  | Paul away---R practical with Andrew                       |            |
