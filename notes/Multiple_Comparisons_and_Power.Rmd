@@ -1,0 +1,394 @@
+---
+title: "Multiple Comparisons & Statistical Power"
+output:
+  html_document: default
+  html_notebook: default
+---
+
+# Probability Distributions in R
+
+Four functions are associated with each probability distribution in
+R. Each distribution has a root name---e.g. for the normal (gaussian)
+distribution the root name is =norm=. The root name is then prefixed
+by a single letter which denotes one of the four functions listed
+below:
+
+- `p`: probability---the cumulative distribution function (cdf)
+- `q`: quantile---the inverse cdf
+- `d`: density---the density function (pdf)
+- `r`: random---a random variable drawn from the specified distribution
+
+So for example for the gaussian (normal) distribution, these are
+`pnorm()`, `qnorm()`, `dnorm()` and `rnorm()`.
+
+For the binomial distribution, these are `pbinom()`, `qbinom()`,
+`dbinom()`, and `rbinom()`, and so on for other distributions.
+
+So for example if you want to know what the probability is of
+obtaining a score greater than or equal to 130, from a normal
+distribution with mean 100 and sd 15, you would use the `pnorm()`
+function:
+
+```{r}
+pnorm(130,mean=100,sd=15,lower.tail=FALSE)
+```
+
+Or say you want to know what the score would be associated with the
+75th percentile of such a distribution---you would use `qnorm()`:
+
+```{r}
+qnorm(0.75,mean=100,sd=15,lower.tail=TRUE)
+```
+
+Or say you wanted to sample 10 values from such a distribution---you would use `rnorm()`:
+
+```{r}
+rnorm(10,mean=100,sd=15)
+```
+
+# Functions in R
+
+A function for computing confidence intervals and an example of its
+use:
+
+```{r}
+myCI <- function(Y, prob=0.95) {
+	m <- mean(Y)
+  ptmp <- 1 - ((1-prob)/2)
+	tcrit <- qt(ptmp, df=length(Y)-1, lower.tail=TRUE)
+	se <- tcrit*sd(Y)/sqrt(length(Y))
+	out <- c(m-se, m+se)
+	return(out)
+}
+
+Y <- c(2,4,3,5,4)
+ci <- myCI(Y, prob=0.95)
+ci
+```
+
+# Monte-Carlo Simulations of Type-I Error
+
+```{r}
+N <- 10			# sample size of each group
+nsims <- 5000		# number of simulated experiments
+alpha <- 0.05		# our chosen alpha level
+
+type1 <- 0		# initialize running total of type-I errors to zero
+
+for (i in 1:nsims) {
+	
+  # generate two random samples of data from the SAME population
+  #
+  g1 <- rnorm(N,0,1) # sample from a normal distribution mean 0 and sd 1
+	g2 <- rnorm(N,0,1) # sample from a normal distribution mean 0 and sd 1
+	
+  # now perform a t-test of difference between means
+	#
+  myresult <- t.test(g1,g2,var.equal=TRUE)
+	p <- myresult$p.value	# extract the p-value
+	
+  # is obtained p-value below our alpha level?
+	# if so, this is a Type-I error
+  #
+  if ( p < .05 ) {
+		type1 <- type1 + 1 # if p < .05 then we've made a type-I error
+	}
+}
+
+paste("There were",type1,"Type-I errors out of",nsims,"(",type1/nsims*100,"% )")
+```
+
+# Monte-Carlo Simulations for estimating Statistical Power
+
+
+```{r}
+# simulations for computing statistical power
+#
+
+N <- 10                 # sample size of each group
+nsims <- 5000           # number of simulated experiments
+alpha <- 0.05           # our chosen alpha level
+
+type2 <- 0              # initialize running total of type-II errors to zero
+
+for (i in 1:nsims) {
+
+	# generate two random samples of data from different populations
+	#
+	g1 <- rnorm(N,100,15) # Control group
+	g2 <- rnorm(N,115,15) # magic IQ-boosting treatment
+
+	# now perform a t-test of difference between means
+	#
+	myresult <- t.test(g1,g2,var.equal=TRUE)
+	p <- myresult$p.value   # extract the p-value
+
+	# is obtained p-value below our alpha level?
+	# if so, this is a Type-I error
+	#
+	if ( p >= alpha ) {
+		type2 <- type2 + 1 # if p >= alpha then we've made a type-II error
+	}
+}
+
+(stat_power <- (nsims-type2)/nsims)
+```
+
+# Monte-Carlo Simulations showing Type-I Error for Planned vs Post-Hoc Comparisons
+
+## Assume 3 groups
+
+```{r}
+nreps <- 5000	  # number of simulated experiments
+n <- 10		      # number of subjects per group
+mupop <- 100	  # population mean
+sigmapop <- 30	# population sd
+alpha <- 0.05	  # our chosen alpha level for rejecting H0
+
+# setup grouping variable
+grp <- as.factor(c(rep("a",n),rep("b",n),rep("c",n)))
+
+errPL <- 0			    # type-I errors planned comps
+errPH <- 0			    # type-I errors chase biggest difference
+gd <- rbind(c(1,2), c(1,3), c(2,3)) # ordering of difference tests
+stime <- system.time({
+for (i in 1:nreps)
+{
+	if ( (i %% 1000) == 0 ) {
+		cat(i, "sims done so far\n")
+	}
+	
+	# randomly sample three groups from same population
+	#
+	g1 <- rnorm(n, mupop, sigmapop);
+	g2 <- rnorm(n, mupop, sigmapop);
+	g3 <- rnorm(n, mupop, sigmapop);
+
+	dv <- c(g1,g2,g3)
+	allg <- cbind(g1,g2,g3)
+
+	# perform single factor between subjects anova
+	#
+	aov.mod <- aov(dv ~ grp)
+	aov.sum <- summary(aov.mod)
+	p.val <- aov.sum[[1]]$"Pr(>F)"[1] # extract p-value
+	msw <- aov.sum[[1]]$"Mean Sq"[2] # mean-square within
+	dfdenom <- aov.sum[[1]]$"Df"[2]
+
+	# precompute differences between means
+	#
+	g12 <- mean(g1)-mean(g2)
+	g13 <- mean(g1)-mean(g3)
+	g23 <- mean(g2)-mean(g3)
+	gdiffs <- c(g12,g13,g23)
+	
+	# planned comparisons
+	# always test (g1 vs g2) and (g1 vs g3) 
+	# if omnibus anova is significant
+	#
+	pcomp <- c()
+	if (p.val < alpha) # if omnibus anova was significant
+	{
+		# test g1 vs g2
+		#
+		Fcomp <- n*((g12)^2) / (2*msw)
+		pcomp <- pf(Fcomp, 1, dfdenom, lower.tail=FALSE) 
+		# count errors
+		#
+		errPL <- errPL + (pcomp < alpha);
+		# test g1 vs g3
+		#
+		Fcomp <- n*((g13)^2) / (2*msw)
+		pcomp <- pf(Fcomp, 1, dfdenom, lower.tail=FALSE) 
+		# count errors
+		#
+		errPL <- errPL + (pcomp < alpha);
+	}
+
+	# posthoc comparison
+	# test the two biggest pairwise differences observed
+	#
+	gdiffsS <- sort(abs(gdiffs), decreasing=TRUE, index.return=TRUE)
+	# choose biggest difference
+	#
+	pcomp <- c()
+	if (p.val < alpha) # if omnibus anova was significant
+	{
+		# test biggest difference
+		#
+		Fcomp <- n*((gdiffsS$x[1])^2) / (2*msw)
+		pcomp <- pf(Fcomp, 1, dfdenom, lower.tail=FALSE) 
+		# count errors
+		#
+		errPH <- errPH + (pcomp < (alpha));
+		
+		# test second biggest difference
+		#
+		Fcomp <- n*((gdiffsS$x[2])^2) / (2*msw)
+		pcomp <- pf(Fcomp, 1, dfdenom, lower.tail=FALSE) 
+		# count errors
+		#
+		errPH <- errPH + (pcomp < (alpha));	
+	}
+}
+})	
+
+cat("errPL=",errPL/nreps,"; errPH=",errPH/nreps,"\n")
+print(stime)
+```
+
+## Assume 5 groups
+
+```{r}
+nreps <- 5000	  # number of simulated experiments
+n <- 10		      # number of subjects per group
+mupop <- 100	  # population mean
+sigmapop <- 30	# population sd
+alpha <- 0.05   # our chosen alpha level for rejecting H0
+
+# setup grouping variable
+grp <- as.factor(c(rep("a",n),rep("b",n),rep("c",n),rep("d",n),rep("e",n)))
+
+errPL <- 0				# type-I errors planned comps
+errPH <- 0			  	# type-I errors chase biggest difference
+# ordering of difference tests
+gd <- rbind(c(1,2), c(1,3), c(1,4), c(1,5), 
+            c(2,3), c(2,4), c(2,5), c(3,4), c(3,5), c(4,5))
+stime <- system.time({
+for (i in 1:nreps)
+{
+	if ( (i %% 1000) == 0 ) {
+		cat(i, "sims done so far\n")
+	}
+	
+	# randomly sample three groups from same population
+	#
+	g1 <- rnorm(n, mupop, sigmapop);
+	g2 <- rnorm(n, mupop, sigmapop);
+	g3 <- rnorm(n, mupop, sigmapop);
+	g4 <- rnorm(n, mupop, sigmapop);
+	g5 <- rnorm(n, mupop, sigmapop);
+
+	dv <- c(g1,g2,g3,g4,g5)
+	allg <- cbind(g1,g2,g3,g4,g5)
+
+	# perform single factor between subjects anova
+	#
+	aov.mod <- aov(dv ~ grp)
+	aov.sum <- summary(aov.mod)
+	p.val <- aov.sum[[1]]$"Pr(>F)"[1] # extract p-value
+	msw <- aov.sum[[1]]$"Mean Sq"[2] # mean-square within
+	dfdenom <- aov.sum[[1]]$"Df"[2]
+
+	# precompute differences between means
+	#
+	g12 <- mean(g1)-mean(g2)
+	g13 <- mean(g1)-mean(g3)
+	g14 <- mean(g1)-mean(g4)
+	g15 <- mean(g1)-mean(g5)
+	g23 <- mean(g2)-mean(g3)
+	g24 <- mean(g2)-mean(g4)
+	g25 <- mean(g2)-mean(g5)
+	g34 <- mean(g3)-mean(g4)
+	g35 <- mean(g3)-mean(g5)
+	g45 <- mean(g4)-mean(g5)
+
+	gdiffs <- c(g12,g13,g14,g15,g23,g24,g25,g34,g35,g45)
+	
+	# planned comparisons
+	# always test (g1 vs g2) and (g1 vs g3) 
+	# if omnibus anova is significant
+	#
+	pcomp <- c()
+	if (p.val < alpha) # if omnibus anova was significant
+	{
+		# test g1 vs g2
+		#
+		Fcomp <- n*((g12)^2) / (2*msw)
+		pcomp <- pf(Fcomp, 1, dfdenom, lower.tail=FALSE) 
+		# count errors
+		#
+		errPL <- errPL + (pcomp < alpha);
+		# test g1 vs g3
+		#
+		Fcomp <- n*((g13)^2) / (2*msw)
+		pcomp <- pf(Fcomp, 1, dfdenom, lower.tail=FALSE) 
+		# count errors
+		#
+		errPL <- errPL + (pcomp < alpha);
+	}
+
+	# posthoc comparison
+	# test the two biggest pairwise differences observed
+	#
+	gdiffsS <- sort(abs(gdiffs), decreasing=TRUE, index.return=TRUE)
+	# choose biggest difference
+	#
+	pcomp <- c()
+	if (p.val < alpha) # if omnibus anova was significant
+	{
+		# test biggest difference
+		#
+		Fcomp <- n*((gdiffsS$x[1])^2) / (2*msw)
+		pcomp <- pf(Fcomp, 1, dfdenom, lower.tail=FALSE) 
+		# count errors
+		#
+		errPH <- errPH + (pcomp < (alpha));
+		
+		# test second biggest difference
+		#
+		Fcomp <- n*((gdiffsS$x[2])^2) / (2*msw)
+		pcomp <- pf(Fcomp, 1, dfdenom, lower.tail=FALSE) 
+		# count errors
+		#
+		errPH <- errPH + (pcomp < (alpha));	
+	}
+}
+})	
+
+cat("errPL=",errPL/nreps,"; errPH=",errPH/nreps,"\n")
+print(stime)
+```
+
+# Multiple Comparisons
+
+```{r}
+# some data
+
+Fac <- factor(c(rep("A",5),rep("B",5),rep("C",5)))
+DV <- c(2,3,2,4,2,3,2,4,5,4,6,4,4,5,8)
+
+myaov <- anova(lm(DV ~ Fac))
+myaov
+
+# perform follow up test comparing individual means
+# e.g. B vs C
+# First do it using the usual F ratio for comparisons
+# this uses the error term from the anova
+# get df and error term from anova table
+
+dfnum <- 1 # because we are doing a pairwise test between 2 means
+dfdenom <- myaov$Df[2]
+mserr <- myaov$"Mean Sq"[2]
+n <- 5 # subjects per group
+a <- 3 # number of groups
+
+mA <- mean(DV[Fac=="A"]) # mean of A
+mB <- mean(DV[Fac=="B"]) # mean of B
+mC <- mean(DV[Fac=="C"]) # mean of C
+sscomp <- (mB-mC)^2 # ss comparison
+(Fcomp <- (n*sscomp/2) / (mserr)) # Fobs for comparison
+(pcomp <- pf(Fcomp, dfnum, dfdenom, lower.tail=FALSE)) 
+
+# note this is uncorrected for type-I error
+# Let's do a Tukey test
+
+qobs <- sqrt(2*Fcomp) # compute q value
+# df for q are (a,(a-1)(n-1))
+(pt <- ptukey(q=qobs, nmeans=a, df=(a-1)*(n-1), lower.tail=FALSE))
+
+# R can do Tukey tests for us:
+(TukeyHSD(aov(DV ~ Fac)))
+```
+
+

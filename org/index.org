@@ -26,7 +26,7 @@
 | Mon | Jan 23 | [[file:One_Way_ANOVA.html][One Way ANOVA]]                                             |            |
 | Wed | Jan 25 | [[file:notes/RPractical_20170125.html][R Practical]]                                               |            |
 |-----+--------+-----------------------------------------------------------+------------|
-| Mon | Jan 30 | Multiple Comparisons & Statistical Power                  |            |
+| Mon | Jan 30 | [[file:Multiple_Comparisons_and_Power.html][Multiple Comparisions & Statistical Power]]                 |            |
 | Wed | Feb 1  | Paul away---R practical with Andrew                       |            |
 |-----+--------+-----------------------------------------------------------+------------|
 | Mon | Feb 6  | 2 & 3-factor ANOVA                                        |            |

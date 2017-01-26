@@ -1,0 +1,33 @@
+#+STARTUP: showall
+
+#+TITLE:     Multiple Comparisons & Statistical Power
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      Winter 2017
+#+OPTIONS: toc:nil html:t num:nil
+#+HTML_LINK_UP: http://www.gribblelab.org/stats/index.html
+#+HTML_LINK_HOME: http://www.gribblelab.org/stats/index.html
+#+LANGUAGE:  en
+#+OPTIONS:   num:nil toc:nil TeX:t LaTeX:t
+#+BABEL:     :session *R*
+
+* Slides
+
+- [[file:slides/Multiple_Comparisons_and_Power.pdf][Multiple_Comparisons_and_Power.pdf]]
+
+* Readings
+
+- [[file:readings/MD4.pdf][Maxwell & Delaney Chapter 4]]
+- [[file:readings/MD5.pdf][Maxwell & Delaney Chapter 5]]
+- [[file:readings/HH01.pdf][Hoenig & Heisey 2001]]
+- [[file:readings/B09.pdf][Bennett 2009]]
+- [[http://daniellakens.blogspot.nl/2014/12/observed-power-and-what-to-do-if-your.html][Observed power, and what to do if your editor asks for post-hoc power analyses]]
+
+* Code
+
+- [[file:code/MultCompMonteCarlo.R][MultCompMonteCarlo.R]]
+- [[file:code/multcomps.R][multcomps.R]]
+
+* R Practical
+
+- [[file:notes/Multiple_Comparisons_and_Power.html][Multiple Comparisons & Statistical Power]]
