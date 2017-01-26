@@ -1,0 +1,153 @@
+\documentclass[10pt]{article}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{ifthen}
+\usepackage{epsfig}
+\usepackage{fancyvrb}
+\usepackage{url}
+\usepackage{fancyhdr}
+
+\usepackage{amsmath}
+\usepackage{mathspec}
+\usepackage{microtype}
+\setmainfont[
+    Numbers={Monospaced,OldStyle},
+    BoldFont={Guardian TextEgyp Medium},
+  ]{Guardian TextEgyp}\linespread{1.2}
+\setsansfont[BoldFont={Helvetica Neue Medium}]{Helvetica Neue}\linespread{1.2}
+\setmonofont[Scale=0.90]{Menlo}\linespread{1.2}
+\setmathrm{Palatino}
+\setmathfont(Digits,Latin,Greek){Palatino}
+
+\tolerance=5000
+
+\usepackage[margin=1.25in,includeheadfoot]{geometry}
+
+\setlength{\skip\footins}{10mm}      % obsessing about footnote spacing
+\setlength{\parskip}{1ex}            % paragraph spacing
+\setlength{\parindent}{0ex}          % paragraph indentation
+
+\usepackage[compact,noindentafter]{titlesec}
+\titleformat*{\section}{\sffamily\large\bfseries}
+\titlespacing{\section}{0pt}{2ex}{1ex}
+\titleformat*{\subsection}{\sffamily\normalsize\bfseries}
+\titlespacing{\subsection}{0pt}{2ex}{0ex}
+
+% LISTS
+\usepackage{enumitem}
+\setenumerate{nolistsep,itemsep=1.0ex,parsep=0.0ex,leftmargin=*}
+\setitemize{nolistsep,itemsep=1.0ex,parsep=0.0ex,leftmargin=*}
+
+\usepackage[iso]{datetime}
+\usdate
+
+% ------- CUSTOM TITLE FORMAT -------
+%
+\makeatletter
+\renewcommand{\maketitle}{
+\begin{flushleft}          % right align
+{\Large\sffamily\bfseries\@title}   % increase the font size of the title
+\vspace{3ex}\\            % vertical space between the title and author name
+{\normalsize\sffamily\@author}           % author name
+\vspace{0ex}\\             % vertical space between author name and date
+\normalsize\sffamily\@date                     % date
+\vspace{5ex}              % vertical space between the author block and abstract
+\end{flushleft}
+}
+% -----------------------------------
+
+% DEFINE SOME COLORS
+\usepackage{color}
+\definecolor{light-blue}{RGB}{37,128,162}
+\definecolor{light-gray}{gray}{0.975}
+\definecolor{dark-gray}{gray}{0.50}
+
+% CODE LISTINGS
+\usepackage{listings}
+\lstset{columns=fullflexible,
+  basicstyle=\ttfamily\small,
+  backgroundcolor=\color{light-gray},
+  frame=lines, frame=lrtb, framesep=3pt, rulecolor=\color{dark-gray},
+  aboveskip=10pt,
+  belowskip=15pt,
+  breaklines=true,
+  showstringspaces=false,
+  keepspaces=true,
+}
+
+
+\title{Assignment 2---Introduction to Statistics Using R}
+\author{Paul Gribble}
+\date{Winter, 2017}
+
+
+\begin{document}
+
+\maketitle
+
+\thispagestyle{empty}
+
+{\flushleft \sffamily * Due Sunday February 5}
+
+\section{Single Factor Between Subjects ANOVA}
+
+The .csv file called \texttt{migraine.csv} contains 27 pain ratings
+collected from migraine sufferers following the ingestion of one of
+three drugs after the onset of migraine (drug A, B or C). Pain ratings
+are on a scale of 1 (least pain) to 10 (most pain).
+
+Load the data into \texttt{R} with the following code:
+
+\begin{lstlisting}[language=R]
+fname <- "http://www.gribblelab.org/stats/data/migraine.csv"
+migraine <- read.table(fname, sep=",", header=TRUE)
+\end{lstlisting}
+
+\begin{enumerate}
+
+\item Generate some kind of graphical display of the data. It's up to
+  you what kind. Label the axes and give the Figure a title.
+
+\item Perform a one-way analysis of variance to determine if there is
+  evidence that pain is affected by drug. You can use the following
+  commands in \texttt{R} if you like:
+
+\begin{lstlisting}[language=R]
+results <- aov(pain ~ drug, data=migraine)
+summary(results)
+\end{lstlisting}
+
+\item Where appropriate, test the assumptions of ANOVA. You can use
+  \texttt{bartlett.test} to test the homogeneity of variance
+  assumption. You can use the \texttt{shapiro.test} to test the
+  normality assumption. You can do the test either on all the data
+  lumped together, or on each group separately---your choice.
+
+\item With reference to the appropriate elements of the ANOVA output,
+  what is your interpretation of the analysis?
+
+\item The omnibus test is significant (\texttt{F(2,24)=11.91,
+    p<0.000256}). Now test which groups are different from each
+  other. Assume you haven't planned comparisons in advance. Conduct
+  all possible pairwise tests, and be sure to apply an adjustment for
+  Type-I error. Explain why you chose your particular adjustment.
+
+  Hint: the \texttt{TukeyHSD} function in \texttt{R} can be applied to
+  the output of the \texttt{aov} function (in the above code, the
+  variable called \texttt{results}).
+
+\item On the basis of your analyses? What can you conclude about each
+  drug's affect on migraine pain?
+
+\end{enumerate}
+
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:
