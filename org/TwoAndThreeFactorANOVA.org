@@ -1,0 +1,31 @@
+#+STARTUP: showall
+
+#+TITLE:     Two & Three Factor ANOVA
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      Winter 2017
+#+OPTIONS: toc:nil html:t num:nil
+#+HTML_LINK_UP: http://www.gribblelab.org/stats/index.html
+#+HTML_LINK_HOME: http://www.gribblelab.org/stats/index.html
+#+LANGUAGE:  en
+#+OPTIONS:   num:nil toc:nil TeX:t LaTeX:t
+#+BABEL:     :session *R*
+
+* Slides
+
+- [[file:slides/TwoAndThreeFactorANOVA.pdf][Two and Three Factor ANOVA]]
+
+* Readings
+
+- [[file:readings/MD7.pdf][Maxwell & Delaney Chapter 7]]
+- [[file:readings/MD8.pdf][Maxwell & Delaney Chapter 8]]
+- [[http://myowelt.blogspot.ca/2008/05/obtaining-same-anova-results-in-r-as-in.html][Type-III SS]]
+- [[https://mcfromnz.wordpress.com/2011/03/02/anova-type-iiiiii-ss-explained/][Type I/II/III SS explained]]
+
+* R Practical
+
+- [[file:notes/TwoAndThreeFactorAnova.html][Two and Three Factor ANOVA]]
+
+- [[file:code/twoWay.R][twoWay.R]]
+- [[file:data/2waydata.csv][2waydata.csv]]
+
