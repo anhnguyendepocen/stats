@@ -32,7 +32,7 @@
 | Mon | Feb 6  | [[file:TwoAndThreeFactorAnova.html][Two and Three Factor ANOVA]]                                |            |
 | Wed | Feb 8  | R practical                                               |            |
 |-----+--------+-----------------------------------------------------------+------------|
-| Mon | Feb 13 | Repeated Measures ANOVA & mixed designs                   |            |
+| Mon | Feb 13 | [[file:Repeated_Measures_ANOVA.html][Repeated Measures ANOVA & Split-Plot Designs]]              |            |
 | Wed | Feb 15 | R practical                                               |            |
 |-----+--------+-----------------------------------------------------------+------------|
 | Mon | Feb 20 | reading week---R practical (optional)                     |            |
