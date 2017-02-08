@@ -1,0 +1,139 @@
+\documentclass[10pt]{article}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{ifthen}
+\usepackage{epsfig}
+\usepackage{fancyvrb}
+\usepackage{url}
+\usepackage{fancyhdr}
+
+\usepackage{amsmath}
+\usepackage{mathspec}
+\usepackage{microtype}
+\setmainfont[
+    Numbers={Monospaced,OldStyle},
+    BoldFont={Guardian TextEgyp Medium},
+  ]{Guardian TextEgyp}\linespread{1.2}
+\setsansfont[BoldFont={Helvetica Neue Medium}]{Helvetica Neue}\linespread{1.2}
+\setmonofont[Scale=0.90]{Menlo}\linespread{1.2}
+\setmathrm{Palatino}
+\setmathfont(Digits,Latin,Greek){Palatino}
+
+\tolerance=5000
+
+\usepackage[margin=1.25in,includeheadfoot]{geometry}
+
+\setlength{\skip\footins}{10mm}      % obsessing about footnote spacing
+\setlength{\parskip}{1ex}            % paragraph spacing
+\setlength{\parindent}{0ex}          % paragraph indentation
+
+\usepackage[compact,noindentafter]{titlesec}
+\titleformat*{\section}{\sffamily\large\bfseries}
+\titlespacing{\section}{0pt}{2ex}{1ex}
+\titleformat*{\subsection}{\sffamily\normalsize\bfseries}
+\titlespacing{\subsection}{0pt}{2ex}{0ex}
+
+% LISTS
+\usepackage{enumitem}
+\setenumerate{nolistsep,itemsep=1.0ex,parsep=0.0ex,leftmargin=*}
+\setitemize{nolistsep,itemsep=1.0ex,parsep=0.0ex,leftmargin=*}
+
+\usepackage[iso]{datetime}
+\usdate
+
+% ------- CUSTOM TITLE FORMAT -------
+%
+\makeatletter
+\renewcommand{\maketitle}{
+\begin{flushleft}          % right align
+{\Large\sffamily\bfseries\@title}   % increase the font size of the title
+\vspace{3ex}\\            % vertical space between the title and author name
+{\normalsize\sffamily\@author}           % author name
+\vspace{0ex}\\             % vertical space between author name and date
+\normalsize\sffamily\@date                     % date
+\vspace{5ex}              % vertical space between the author block and abstract
+\end{flushleft}
+}
+% -----------------------------------
+
+% DEFINE SOME COLORS
+\usepackage{color}
+\definecolor{light-blue}{RGB}{37,128,162}
+\definecolor{light-gray}{gray}{0.975}
+\definecolor{dark-gray}{gray}{0.50}
+
+% CODE LISTINGS
+\usepackage{listings}
+\lstset{columns=fullflexible,
+  basicstyle=\ttfamily\small,
+  backgroundcolor=\color{light-gray},
+  frame=lines, frame=lrtb, framesep=3pt, rulecolor=\color{dark-gray},
+  aboveskip=10pt,
+  belowskip=15pt,
+  breaklines=true,
+  showstringspaces=false,
+  keepspaces=true,
+}
+
+
+\title{Assignment 3---Introduction to Statistics Using R}
+\author{Paul Gribble}
+\date{Winter, 2017}
+
+
+\begin{document}
+
+\maketitle
+
+\thispagestyle{empty}
+
+{\flushleft \sffamily * Due Sunday Feb 19}
+
+\section*{Snakes on a Plane}
+
+A psychologist is interested in three types of therapy for modifying
+snake phobia. She suspects that one type of therapy may not be best
+for everyone---rather the best type of therapy may depend on the
+severity of the phobia. Undergraduate students in an intro psych
+course are given the Fear Schedule Survey (FSS) to screen out subjects
+showing no fear of snakes. Those displaying some degree of phobia are
+classified as mildly, moderately, or severely phobic. One third of
+subjects within each level of severity are then assigned to a
+treatment condition: systematic desensitization, implosive therapy, or
+insight therapy. The following data are obtained following therapy,
+using the Behavioral Avoidance Test (higher scores are better, meaning
+less snake phobia)
+\footnote{\url{http://www.gribblelab.org/stats/data/snakedata.csv}}.
+
+Your task is to analyze these data and to answer any questions you
+believe would be of theoretical interest. Don't feel compelled to
+perform an analysis just because it is possible statistically. Rather
+justify the use of each test. Don't forget to test assumptions of
+ANOVA, and to justify your choices about how (or if) to control for
+Type-I error in any follow-up tests you choose to perform. Use graphical plots
+where appropriate to help tell the story. Finally, make sure to include one or more
+concluding statements.
+
+\begin{table}[h]
+  \begin{center}
+    \begin{tabular}{|rrr|rrr|rrr|}
+      \hline
+      \multicolumn{3}{|c|}{Desensitization} &\multicolumn{3}{|c|}{Implosion} &\multicolumn{3}{|c|}{Insight} \\
+      \hline
+      Mild & Moderate & Severe & Mild & Moderate & Severe & Mild & Moderate & Severe \\
+      14 & 15 & 12 & 10 & 12 & 10 &  8 & 9  &  6 \\
+      17 & 11 & 10 & 16 & 14 &  3 & 10 & 6  & 10 \\
+      10 & 12 & 10 & 19 & 10 &  6 & 12 & 7  &  8 \\
+      13 & 10 &  9 & 20 & 11 &  8 & 14 & 12 &  9 \\
+      12 &  9 & 11 & 19 & 13 &  2 & 11 & 11 &  7 \\
+      \hline
+      \end{tabular}
+      \caption{BAT scores following therapy for snake phobia (higher scores are better, indicating less phobia)}
+      \label{ass5data}
+      \end{center}
+\end{table}
+
+\end{document}
+

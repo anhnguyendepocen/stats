@@ -29,7 +29,7 @@
 | Mon | Jan 30 | [[file:Multiple_Comparisons_and_Power.html][Multiple Comparisions & Statistical Power]]                 | [[file:assignments/A02.pdf][A02.pdf]]    |
 | Wed | Feb 1  | Paul away---R practical with Andrew                       |            |
 |-----+--------+-----------------------------------------------------------+------------|
-| Mon | Feb 6  | [[file:TwoAndThreeFactorAnova.html][Two and Three Factor ANOVA]]                                |            |
+| Mon | Feb 6  | [[file:TwoAndThreeFactorAnova.html][Two and Three Factor ANOVA]]                                | [[file:assignments/A03.pdf][A03.pdf]]    |
 | Wed | Feb 8  | R practical                                               |            |
 |-----+--------+-----------------------------------------------------------+------------|
 | Mon | Feb 13 | [[file:Repeated_Measures_ANOVA.html][Repeated Measures ANOVA & Split-Plot Designs]]              |            |
