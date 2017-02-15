@@ -54,7 +54,7 @@
 	 )
 	("stats_notes"
 	 :base-directory "notes/"
-	 :base-extension "html\\|Rmd"
+	 :base-extension "html\\|Rmd\\|pdf\\|Rnw\\|bib"
 	 :publishing-directory "/ssh:plg@toro.ssc.uwo.ca:~/gribblelab.org/stats/notes/"
 	 :publishing-function org-publish-attachment
 	 :recursive t

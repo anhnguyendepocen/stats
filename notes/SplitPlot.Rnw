@@ -1,0 +1,154 @@
+\documentclass[11pt]{article}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage[utf8x]{inputenc}
+
+\usepackage[top=1.25in, bottom=1.25in, left=1.25in, right=1.25in]{geometry}
+
+\pagestyle{fancy}
+\fancyhead{} \fancyfoot{} \lhead{\nouppercase{Intro Stats R}}
+\rhead{\nouppercase{\leftmark}} \cfoot{\thepage}
+
+\title{Split Plot ANOVA\\Introduction to Statistics Using R (Psychology 9041B)}
+
+\author{Paul Gribble}
+
+\usepackage[iso]{datetime}
+\usdate
+
+\date{Winter, 2016}
+
+\SweaveOpts{keep.source=TRUE}
+
+\setlength{\skip\footins}{20mm}
+
+\begin{document}
+
+\maketitle
+
+\section{Higher order repeated measures designs \& MANOVA}
+
+\subsection{Two factor repeated measures ANOVA}
+
+First let's load in the sample data. We have organized the data file in a column-wise format, where each row is a
+subject. This is in preparation for a multivariate approach to the ANOVA. Here we won't both with the univariate
+approach, since we are interested in the sphericity tests and the corrected values of the F test.
+
+<<>>=
+fname <- "http://www.gribblelab.org/stats/data/2wayrepdata.csv"
+mydata <- read.table(fname, sep=",", header=TRUE)
+mydata
+@
+
+Let's extract the data matrix (just the numeric values) from the data frame:
+
+<<>>=
+dm <- as.matrix(mydata[1:5, 2:7])
+dm
+@
+
+Now let's create a multivariate linear model object:
+
+<<>>=
+mlm1 <- lm(dm ~ 1)
+@
+
+Next we are going to use the \texttt{Anova()} command in the \texttt{car} package\footnote{If you don't have the \texttt{car} package installed, just type \texttt{install.packages("car")} and R will download it and install it.} so we have to first load the
+package. We also have to define a data frame that contains the within-subjects factors.
+
+<<>>=
+library(car)
+af <- factor(c("a1","a1","a1","a2","a2","a2"))
+bf <- factor(c("b1","b2","b3","b1","b2","b3"))
+myfac <- data.frame(factorA=af,factorB=bf)
+myfac
+@
+
+Now we will define the anova using \texttt{Anova()}:
+
+<<>>=
+mlm1.aov <- Anova(mlm1, idata = myfac, idesign = ~factorA*factorB, type="III")
+summary(mlm1.aov, multivariate=FALSE)
+@
+
+Note how the formula \texttt{FactorA*FactorB} uses the same names as in the \texttt{myfac} data frame we defined.
+
+The first part of the output lists the omnibus F tests for the main effects and the interaction effect. We then see
+the Mauchly tests of sphericity. We see tests for the main effect of factorB, and the factorA:factorB interaction
+effect. We don't see a test of the main effect of factorA, because in this case, factorA has only two levels ...
+and so there is no variances of differences-between-groups... since there are only two levels, there is only a
+single variance of differences (between the two levels). We then see Greenhouse-Geisser and Huynh-Felft
+corrections.
+
+\subsubsection{Simple main effects}
+
+The factorA:factorB interaction is significant, so we want to conduct so-called simple main effects analyses. This
+would be testing the effects of one factor (e.g. factorB), separately within each level of factorA (or vice-versa).
+In a between-subjects two-factor ANOVA, simple main effects are evaluated by doing separate one-way ANOVAs, but
+using the MSerror term from the overall two-factor analysis as the error term. For within-subjects designs it's
+probably better to use separate error terms for each analysis, since the sphericity assumption is likely not true, and repeated measures ANOVA Is sensitive (more so than between-subjects ANOVA) to violations of the sphericity assumption.
+Therefore we can in fact literally run separate single-factor repeated measures ANOVAs, with one factor, within
+levels of the other factor.
+
+\subsubsection{Pairwise tests \& linear contrasts}
+
+The approach for computing linear contrasts (including pairwise tests) is the same as for a single-factor repeated
+measures design. We can either compute F ratios by taking the appropriate MSerr term from the ANOVA output (this
+approach assumes sphericity), or we can simple compute differences scores and perform t-tests (this doesn't assume
+sphericity). Correcting for Type-I error is up to you --- you could use a Bonferroni adjustment, or compute Tukey
+probabilities, etc.
+
+\subsection {Split plot designs}
+
+A split plot design is a mixed design in which there are some repeated measures factor(s) and some between-subjects
+factor(s). Let's load in some sample data for a study with one repeated measures and one between subjects factor:
+
+<<>>=
+fname <- "http://www.gribblelab.org/stats/data/splitplotdata.csv"
+mdata <- read.table(fname, sep=",", header=TRUE)
+mdata
+@
+
+We have three levels of a repeated measures factor (a1, a2, a3) and two levels of a between-subjects factor, gender
+(m,f), and 10 subjects.
+
+First as before we extract the data corresponding to the dependent variable from the data frame:
+
+<<>>=
+dm <- as.matrix(mdata[1:10, 2:4])
+dm
+@
+
+Then we formulate our multivariate model:
+
+<<>>=
+mlm <- lm(dm ~ 1 + gender, data=mdata)
+@
+
+Note how now \texttt{dm} depends not just on a constant but also on \texttt{gender}. Next we design a data frame
+that contains the design of the repeated measures factor:
+
+<<>>=
+af <- factor(c("a1","a2","a3")) 
+myfac <- data.frame(factorA=af) 
+myfac
+@
+
+Now we use the \texttt{Anova()} function to perform the split plot anova:
+
+<<>>=
+mlm.aov <- Anova(mlm, idata=myfac, idesign = ~factorA, type="III")
+summary(mlm.aov, multivariate=FALSE)
+@
+
+\subsubsection{Followup tests}
+
+The rules and approach for further tests following significant omnibus ANOVA test(s) are no different than before.
+
+
+
+\end{document}
+

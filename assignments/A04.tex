@@ -1,0 +1,152 @@
+\documentclass[10pt]{article}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{ifthen}
+\usepackage{epsfig}
+\usepackage{fancyvrb}
+\usepackage{url}
+\usepackage{fancyhdr}
+
+\usepackage{amsmath}
+\usepackage{mathspec}
+\usepackage{microtype}
+\setmainfont[
+    Numbers={Monospaced,OldStyle},
+    BoldFont={Guardian TextEgyp Medium},
+  ]{Guardian TextEgyp}\linespread{1.2}
+\setsansfont[BoldFont={Helvetica Neue Medium}]{Helvetica Neue}\linespread{1.2}
+\setmonofont[Scale=0.90]{Menlo}\linespread{1.2}
+\setmathrm{Palatino}
+\setmathfont(Digits,Latin,Greek){Palatino}
+
+\tolerance=5000
+
+\usepackage[margin=1.25in,includeheadfoot]{geometry}
+
+\setlength{\skip\footins}{10mm}      % obsessing about footnote spacing
+\setlength{\parskip}{1ex}            % paragraph spacing
+\setlength{\parindent}{0ex}          % paragraph indentation
+
+\usepackage[compact,noindentafter]{titlesec}
+\titleformat*{\section}{\sffamily\large\bfseries}
+\titlespacing{\section}{0pt}{2ex}{1ex}
+\titleformat*{\subsection}{\sffamily\normalsize\bfseries}
+\titlespacing{\subsection}{0pt}{2ex}{0ex}
+
+% LISTS
+\usepackage{enumitem}
+\setenumerate{nolistsep,itemsep=1.0ex,parsep=0.0ex,leftmargin=*}
+\setitemize{nolistsep,itemsep=1.0ex,parsep=0.0ex,leftmargin=*}
+
+\usepackage[iso]{datetime}
+\usdate
+
+% ------- CUSTOM TITLE FORMAT -------
+%
+\makeatletter
+\renewcommand{\maketitle}{
+\begin{flushleft}          % right align
+{\Large\sffamily\bfseries\@title}   % increase the font size of the title
+\vspace{3ex}\\            % vertical space between the title and author name
+{\normalsize\sffamily\@author}           % author name
+\vspace{0ex}\\             % vertical space between author name and date
+\normalsize\sffamily\@date                     % date
+\vspace{5ex}              % vertical space between the author block and abstract
+\end{flushleft}
+}
+% -----------------------------------
+
+% DEFINE SOME COLORS
+\usepackage{color}
+\definecolor{light-blue}{RGB}{37,128,162}
+\definecolor{light-gray}{gray}{0.975}
+\definecolor{dark-gray}{gray}{0.50}
+
+% CODE LISTINGS
+\usepackage{listings}
+\lstset{columns=fullflexible,
+  basicstyle=\ttfamily\small,
+  backgroundcolor=\color{light-gray},
+  frame=lines, frame=lrtb, framesep=3pt, rulecolor=\color{dark-gray},
+  aboveskip=10pt,
+  belowskip=15pt,
+  breaklines=true,
+  showstringspaces=false,
+  keepspaces=true,
+}
+
+
+\title{Assignment 4---Introduction to Statistics Using R}
+\author{Paul Gribble}
+\date{Winter, 2017}
+
+
+\begin{document}
+\maketitle
+
+\thispagestyle{empty}
+
+{\flushleft \sffamily * Due Friday March 3}
+
+\section{ANCOVA}
+
+You are Dean of Science at UWO. You have just met with one of the new
+assistant professors in the Department of Math, for his annual
+performance evaluation. Professor X claims that his salary is much too
+low and he wants you to give him a raise. He claims he is particularly
+good at teaching and thus he deserves a raise. As evidence of this, he
+says that among the three sections of calculus taught in first year,
+his students (Section I) get the highest grades on the Calculus final
+exam, which is common to all three sections (see Table~\ref{calctable}
+below). You ask the Chair of Math to collect some data for you. She
+gives you final exam scores for a random sample of 50 students chosen
+from each of the three sections of Calculus
+101~\footnote{\url{http://www.gribblelab.org/stats/data/calculus2.csv}}.
+
+\textbf{Question 1.1}: Conduct a standard one-way ANOVA to assess
+whether the three sections differ in terms of final exam scores. What
+would you conclude based on the ANOVA?
+
+The Chair of the Math Department calls you the next day and tells you
+that she also has available high-school mathematics grades for each of
+the students in the three sections of Calculus 101. She advises that
+you might want to ``take this information into consideration'' when
+comparing final grades in the three sections. She advises you that
+Section I (Professor X's section) appears to contain a
+disproportionate number of students from the same private school in
+Toronto, compared to sections II and III which contain a broader
+representation of students overall.
+
+\textbf{Question 1.2}: Conduct an ANCOVA in which you take into
+account the high-school grades of students. Based on the ANCOVA
+results, what can you conclude about the final exam scores from
+Sections I, II and III of Calculus 101?  What can you conclude about
+Professor X's claim? Will you give him a raise?
+
+Include in your (brief) report and discuss: raw means; adjusted means; ANOVA tables; helpful graphical displays.
+
+
+\begin{table}[ht]
+  \begin{center}
+    \begin{tabular}{|l|ccc|}
+      \hline
+      Calculus Section &I &II &III\\
+      \hline
+      Mean Calculus Grade &81.9 &75.3 &75.7\\
+      Mean High School Math Grade &76.1 &67.5 &68.6\\
+      \hline
+    \end{tabular}
+    \caption{Final Calculus Grades}
+    \label{calctable}
+  \end{center}
+\end{table}
+
+
+\end{document}
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

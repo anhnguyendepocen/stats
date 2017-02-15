@@ -1,0 +1,416 @@
+\documentclass[11pt]{article}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{ifthen}
+\usepackage{epsfig}
+\usepackage{fancyvrb}
+\usepackage{fancyhdr}
+\usepackage[utf8x]{inputenc}
+\usepackage{url}
+
+\usepackage[top=1.25in, bottom=1.25in, left=1.25in, right=1.25in]{geometry}
+
+\pagestyle{fancy}
+\fancyhead{} \fancyfoot{} \lhead{\nouppercase{Intro Stats R}}
+\rhead{\nouppercase{\leftmark}} \cfoot{\thepage}
+
+\title{Multiple Regression\\Introduction to Statistics Using R (Psychology 9041B)}
+
+\author{Paul Gribble}
+
+\usepackage[iso]{datetime}
+\usdate
+
+\date{Winter, 2016}
+
+\SweaveOpts{keep.source=TRUE}
+
+\setlength{\skip\footins}{20mm}
+
+\begin{document}
+
+
+\maketitle
+
+\section{Correlation, Regression \& Multiple Regression}
+
+\subsection{Bivariate correlation}
+
+The Pearson product-moment correlation coefficient (typically represented by $r$), assesses the nature and strength
+of the linear relationship between two continuous variables $X$ and $Y$.
+
+\begin{equation}
+	r = \frac{\sum{(X-\bar{X})(Y-\bar{Y})}}{\sqrt{\sum{(X-\bar{X})^{2}}\sum{(Y-\bar{Y})^{2}}}}
+\end{equation}
+
+The quantity $r^{2}$ represents the proportion of variance shared by the two variables.
+
+To compute $r$ using \texttt{R} is simple using the function \texttt{cor()}:
+
+<<>>=
+X <- c(1,3,4,3,5,4,4,6,7,8)
+Y <- c(3,2,5,6,5,8,7,6,9,10)
+r <- cor(X,Y)
+r
+@
+
+We can perform significance tests on $r$. The null hypothesis is that $r=0$. Note that the alternate hypothesis is
+simply that $r\neq0$, not that $r$ is large. The significance test of $r$ simply reports the probability of getting
+a value of $r$ as extreme as the one observed, if we were to randomly draw two samples from two populations that
+were not in fact correlated ($r_{pop1,pop2}=0$).
+
+We can perform an F-test with $df=(1,N-2)$:
+
+\begin{equation}
+	F=\frac{r^{2}(N-2)}{1-r^{2}}
+\end{equation}
+
+For the \texttt{R} example above:
+
+<<>>=
+N <- length(X)
+Fobs <- (r*r*(N-2)) / (1-(r*r))
+pobs <- 1 - pf(Fobs, 1, N-2)
+Fobs
+pobs
+@
+
+In this case $p<0.05$ so we reject the null hypothesis that $r=0$, and conclude simply that there is a reliable
+non-zero correlation between $X$ and $Y$.
+
+There is an even faster way of performing the significance tests, on the entire correlation matrix, using the
+\texttt{rcorr()} function, which is part of the \texttt{Hmisc} package. You will have to first install the package
+(once only) using the \texttt{install.packages()} function, then tell \texttt{R} to use the package using the
+\texttt{library()} function. The \texttt{rcorr()} function requires a matrix as input, so we use the
+\texttt{as.matrix()} function to convert the data frame \texttt{bdata} to a matrix.
+
+<<>>=
+# install.packages("Hmisc") # you only need to do this once on a given computer
+library(Hmisc) # you will need to do this once within a given R session
+fname <- "http://www.gribblelab.org/stats/data/bball.csv"
+bdata <- read.table(fname, sep=",", header=TRUE)
+summary(bdata)
+rcorr(as.matrix(bdata))
+@
+
+Note that if $N$ is large, we can achieve a low probability on the significance test of $r$, even with a small value of
+$r$. For example we might observe a value of $r=0.20$, but because we have $N=100$, we end up with $Fobs=4.08$ and
+$p<0.05$. In this case $r^{2}=0.04$, which means $X$ and $Y$ only share 4~\% of their variance in common ... but the
+significance test shows the correlation is reliably non-zero. It doesn't mean it's large, it's just not zero. Be
+careful about the use of the word ``significant'' --- it's doesn't mean a correlation is significant in the everyday
+use of the word, rather it means only that the correlation is not zero.
+
+\subsection{Bivariate regression}
+
+In bivariate regression, we have two continuous variables $X$ and $Y$. The variable $Y$ is considered to be
+dependent on $X$. The goal is to characterize the (linear) relationship between $X$ and $Y$, and in particular, to
+predict a value of $Y$ given a value of $X$. For example if $Y$ is a person's weight, and $X$ is a person's height,
+then we model the (linear) relationship between these two variables using the following equation:
+
+\begin{equation}
+	\hat{Y}_{i} = \beta_{0} + \beta_{1}X_{i}
+\end{equation}
+
+where $\hat{Y}_{i}$ is the estimated value of $Y$ for the $i$th subject, $\beta_{0}$ is the intercept (the value of
+$Y$ when $X$ is zero), and $\beta_{1}$ is the slope of the relationship between $X$ and $Y$ --- the predicted
+increase in $Y$ given a unit increase in $X$. Note that this is the equation for a straight line with intercept
+$\beta_{0}$ and slope $\beta_{1}$.
+
+For bivariate regression we can estimate $\beta_{0}$ and $\beta_{1}$ easily using equations that correspond to
+least-squares estimates:
+
+\begin{eqnarray}
+	\beta_{1} &= &\frac{\sum{(X-\bar{X})(Y-\bar{Y})}}{\sum{(X-\bar{X})^{2}}} \\
+	\beta_{0} &= &\bar{Y}-\beta_{1}\bar{X}
+\end{eqnarray}
+
+This gives values of $\beta_{0}$ and $\beta_{1}$ that minimize the sum of squared deviations of the
+estimated values of $Y$ (the line of best fit) and the observed values of $Y$ (the data).
+
+In \texttt{R} we use the \texttt{lm()} function to fit a linear model to continuous data:
+
+<<>>=
+m1 <- lm(Y ~ X)
+summary(m1)
+plot(X,Y,pch=16)
+abline(m1,lty=2)
+@
+
+<<echo=false,fig=true>>=
+plot(X,Y,pch=16)
+abline(m1,lty=2)
+@
+
+We can read from the output, the estimates of $\beta_{0}$ and $\beta_{1}$ (in the column of the output
+labelled \texttt{Estimate} --- \texttt{(Intercept)} is $\beta_{0}$ and \texttt{X} is $\beta_{1}$. We also
+get a t-test on each parameter. These are significance tests of the null hypothesis that the population
+value of the parameter of interest is zero.
+
+To assess how well our model fits the data, we can compute the ``standard error of estimate'', which gives
+a measure of the typical prediction error, in the same units of $Y$:
+
+\begin{equation}
+	se = \sqrt{\frac{\sum{(Y-\hat{Y})^{2}}}{N-2}}
+\end{equation}
+
+In \texttt{R} it's a simple matter of reading it from the output of \texttt{summary.lm()} --- in the above
+example, $se=1.669$.
+
+We can also get confidence intervals on the predicted values of $Y$:
+
+<<>>=
+ypred <- predict(m1, data.frame(X=3.0), interval="prediction", level=0.95)
+ypred
+@
+
+Obviously the standard error of the estimate as well as the confidence interval depends on sample size $N$.
+
+Another measure of fit is $r^{2}$, which gives the proportion of variance in $Y$ accounted for by variation in $X$.
+
+\begin{equation}
+	r^{2} = \frac{\sum{(\hat{Y}-\bar{Y})^{2}}}{\sum{(Y-\bar{Y})^{2}}}
+\end{equation}
+
+In \texttt{R} we can read off the value of $r^{2}$ directly from the output of \texttt{summary.lm()}.
+
+\subsection{Linear regression with non-linear terms}
+
+We can include non-linear \emph{terms} in a linear model. This may be appropriate in cases when you are
+trying to model some forms of non-linear relationships, e.g. that shown below:
+
+<<>>=
+X <- c(-5,-4,-3,-2,-1,0,1,2,3,4,5,6,7,8,9,10)
+Y <- X^2 + rnorm(16,0,3)
+plot(X,Y,pch=16)
+@
+
+<<echo=false,fig=true>>=
+plot(X,Y,pch=16)
+@
+
+A linear fit would produce the following:
+
+<<>>=
+m2 <- lm(Y ~ X)
+abline(m2, lty=2)
+@
+
+<<echo=false,fig=true>>=
+plot(X,Y,pch=16)
+abline(m2,lty=2)
+@
+
+We can attempt to fit the data using an equation of the form:
+
+\begin{equation}
+	Y = \beta_{0} + \beta_{1}X^{2}
+\end{equation}
+
+In this case the model equation is still linear \emph{in betas} even though we are predicting based on $X^{2}$
+instead of $X$.
+
+To do this in \texttt{R} simply create a new variable representing $X^{2}$:
+
+<<>>=
+Xsquared <- X*X
+m3 <- lm(Y ~ Xsquared)
+summary(m3)
+yfit <- predict(m3,data.frame(X=Xsquared))
+lines(X,yfit,lty=2)
+@
+
+<<echo=false,fig=true>>=
+plot(X,Y,pch=16)
+lines(X,yfit,lty=2)
+@
+
+You can see we have achieved a much better fit.
+
+\subsection{Multiple regression}
+
+In multiple regression the idea is to predict a dependent variable $Y$ based on a linear combination of
+independent variables $X_{1}$~-~$X_{k}$, where $k>1$:
+
+\begin{equation}
+	\hat{Y} = \beta_{0} + \beta_{1}X_{1} + \beta_{2}X_{2} + \dots + \beta_{k}X_{k}
+\end{equation}
+
+The coefficients are computed according to a least-squares criterion, in order to minimize the sum of
+squared differences between the predicted values of $Y$, $\hat{Y}$, and the observed values of $Y$.
+
+For the purposes of illustration, we'll work with a dataset containing measures on 7 variables from 105
+basketball players:
+
+\begin{center}
+\begin{tabular}{c|l}
+	\texttt{GAMES} &\# games played in previous season \\
+	\texttt{PPM}   &average points scored per minute \\
+	\texttt{MPG}   &average minutes played per game \\
+	\texttt{HGT}   &height of player (centimetres) \\
+	\texttt{FGP}   &field-goal percentage (\% successful shots from 3-point line) \\
+	\texttt{AGE}   &age of player (years) \\
+	\texttt{FTP}   &percentage of successful penalty free throws \\	
+\end{tabular}
+\end{center}
+
+After loading the data into a data frame, we can use the \texttt{pairs()} function to quickly visualize
+scatterplots of all variables plotted against each other:
+
+<<echo=true,fig=true>>=
+fname <- "http://www.gribblelab.org/stats/data/bball.csv"
+bdata <- read.table(fname,sep=",",header=TRUE)
+pairs(bdata, pch=16)
+@
+
+For the purpose of this demonstration, let's assume we want to develop a model that predicts a players free
+throw percentage \texttt{FTP} based on the other 6 variables. We can ask several questions of the data:
+
+\begin{itemize}
+	\item What is the best single predictor of \texttt{FTP}?
+	\item What is the best set of variables (best model) to predict \texttt{FTP}?
+	\item Does a certain variable add significantly to the predictive power of the model?
+\end{itemize}
+
+To determine the single best predictor, we can simply compute the correlation coefficient $r$ for each
+variable paired with \texttt{FTP}, and pick the one with the highest (absolute) value. First we'll compute
+a correlation matrix, i.e. the correlation of every variable with every other variable; then we'll pick the
+row of interest (the correlations of \texttt{FTP} with the other 6 variables); then we'll throw out the
+entry corresponding to the correlation of \texttt{FTP} with itself, since that will be equal to $1$:
+
+<<>>=
+r <- cor(bdata)
+r <- r[7,-7]
+r
+@
+
+In this case the variable most correlated with \texttt{FTP} is \texttt{MPG}, the average number of minutes
+player per game.
+
+We can perform significance tests on each correlation coefficient; the code involving \texttt{round()} is
+simply to show the values with three decimal places of precision --- it's easier to read.
+
+<<>>=
+N <- nrow(bdata)
+# compute F statistic and then p value
+F <- ((r^2)*(N-2))/(1-(r^2))
+p <- 1-pf(F,1,N-2)
+p
+round(p*1000)/1000
+@
+
+We can see that with an alpha level set at $0.05$, two variables, \texttt{HGT} and \texttt{PPM} are not
+significantly correlated with \texttt{FTP}, but the others are. Once again, be careful: this simply means
+that for \texttt{GAMES}, \texttt{MPG}, \texttt{FGP} and \texttt{AGE}, the correlation is not zero --- it
+doesn't mean it's large.
+
+Now it's time to develop a model --- in other words, what's the best model to predict \texttt{FTP}?
+Certainly a model that contains all variables will have the lowest prediction error ... but our goal should
+be to balance prediction precision with parsimony --- in other words, we want the minimum number of
+variables necessary to achieve a reasonable predictive power. We could include all available variables, but
+some of them will not be accounting for a significant unique portion of the total variance in the dependent
+variable $Y$. Another way of thinking about this is, with each additional independent variable $X$ included
+in the model, we lower the prediction error, but at a cost of one degree of freedom.
+
+There are several methods for developing the best model, taking account of the tradeoff between model
+precision and model parsimony. A good method to use is called stepwise regression. The procedure is a
+mixture of \emph{add}ing and \emph{drop}ping IVs, and proceeds as follows:
+
+\begin{enumerate}
+	\item Start with an empty model, with no independent variables (IVs).
+	\item Check to see if any of the available IVs significantly predict the dependent variable (DV).
+	\item If no, stop. If yes, \textbf{add} the best one, and go to step 4.
+	\item Check to see if any of the remaining IVs account for a \emph{unique} proportion of variance in $Y$, above and beyond what's already accounted for by the IVs already in the model.
+	\item If no, stop. If yes, \textbf{add} the best one and go to step 6.
+	\item Check that each IV currently in the model still accounts for a significant unique proportion of variance in $Y$, above and beyond what's accounted for by the other variables in the model, and \textbf{drop} any variables that don't.
+	\item go to step 4
+\end{enumerate} 
+
+The stepwise procedure is designed to ensure that at the end of the procedure you end up with a model in
+which all IVs included in the model account for a significant unique proportion of variance in $Y$, above
+and beyond what's accounted for by the other variables in the model.
+
+In \texttt{R} the \texttt{step()} function performs stepwise regression. The \texttt{step()} function
+requires us to pass as parameters a starting model (in our case it will be an empty model containing no
+IVs), a list containing \texttt{lower} and \texttt{upper} parameters corresponding to the minimum and
+maximum models to be tested, and a \texttt{direction} parameter that we will pass \texttt{"both"}, to
+signify that we want \texttt{step()} to both add and drop IVs as necessary.
+
+<<>>=
+m0 <- lm(FTP ~ 1, data=bdata)
+mall <- lm(FTP ~ GAMES + MPG + HGT + PPM + AGE + FGP, data=bdata)
+mbest <- step(m0, list(lower=m0, upper=mall), direction="both")
+summary(mbest)
+@
+
+The \texttt{step()} function outputs each step in the stepwise regression. We end up in this case with a
+linear model containing \texttt{MPG + AGE + FGP}.
+
+Note that in the \texttt{step()} function, the question of whether an IV accounts for a unique proportion
+of variance, above and beyond the other variables in the model, is assessed using the Akaike Information
+Criterion (AIC). This is simply a measure of the goodness of fit of a statistical model, one that is
+grounded in the concept of entropy. It essentially provides a relative measure of the information lost when
+a given model is used to describe data, and accounts for the tradeoff between bias and variance in model
+construction (in other words, precision vs complexity of the model). Lower values of AIC correspond to a
+better model.
+
+Note that the default test in SPSS does not use AIC, but instead performs an F-test. The idea is the same;
+compare two models, one without the IV of interest, and one with the IV of interest, and perform an F-test
+to see if the additional variance accounted for is ``worth'' giving up one degree of freedom. We can
+perform tests like this in \texttt{R} using the \texttt{add1()} and \texttt{drop1()} functions. The
+\texttt{add1()} function performs F-tests for adding each variable, individually, to a given model; the
+\texttt{drop1()} function performs F-tests for dropping each variable, individually, from a given model.
+
+\subsection{Stepwise Regression using F tests, by hand}
+
+Let's perform a stepwise regression manually, using F-tests:
+
+<<>>=
+m0 <- lm(FTP ~ 1,data=bdata)
+mall <- lm(FTP ~ GAMES + MPG + HGT + PPM + AGE + FGP, data=bdata)
+# start with nothing in the model - which IV to add?
+add1(m0, formula(mall), test="F")
+# check the output of the add1() tests, and add the best single one
+mbest <- lm(FTP ~ 1 + MPG, data=bdata)
+# which to add next?
+add1(mbest, formula(mall), test="F")
+# check the output of the add1() tests, and add the best single one
+mbest <- lm(FTP ~ 1 + MPG + AGE, data=bdata)
+# now do a check for unique variance, drop those who don't contribute
+drop1(mbest,test="F")
+# all still contribute unique variance so we keep them all in the model
+# which one to add next?
+add1(mbest, formula(mall), test="F")
+# none are significant any more, we stop
+# (FGP would be the next best one, but p = 0.1029, not < 0.05)
+@
+
+Note that sometimes people use a different alpha level for adding IVs versus dropping IVs --- e.g. the
+default in SPSS is to use $p<0.05$ for entering a variable into the model, but $p>0.10$ for dropping a
+variable from the model.
+
+We can then, as before with bivariate regression, generate a prediction for a value of $Y$ given values of
+$X_{1}$~-~$X){k}$. Let's say we have a new basketball player, and we want to predict, what will his free
+throw percentage be, given that we know values on 6 other IVs:
+
+<<>>=
+newRecruit <- data.frame(GAMES=64, PPM=0.4, MPG=20, HGT=200, FGP=60, AGE=23)
+newFTP <- predict(mbest, newRecruit, se.fit=TRUE, interval="prediction", level=0.95)
+newFTP
+@
+
+We see that the predicted \texttt{FTP} is $74.1619$, and that the 95~\% confidence interval on the
+prediction is $57.35022$~-~$90.97358$.
+
+\subsubsection{Stepwise Regression using F tests instead of AIC}
+
+We can ask the \texttt{step()} function in \texttt{R} to use F tests instead of the AIC criterion to add and drop terms in the stepwise regression, like this:
+
+<<>>=
+step(m0, list(lower=m0, upper=mall), direction="both", test="F")
+@
+
+
+\end{document}
+
