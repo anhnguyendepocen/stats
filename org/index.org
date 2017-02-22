@@ -45,7 +45,7 @@
 | Wed | Mar 8  | R practical                                                   |            |
 |-----+--------+---------------------------------------------------------------+------------|
 | Mon | Mar 13 | Bootstrapping & Resampling                                    |            |
-| Wed | Mar 15 | R pratical                                                    |            |
+| Wed | Mar 15 | R practical                                                   |            |
 |-----+--------+---------------------------------------------------------------+------------|
 | Mon | Mar 20 | Maximum likelihood estimation (MLE) & logistic regression     |            |
 | Wed | Mar 22 | R practical                                                   |            |
