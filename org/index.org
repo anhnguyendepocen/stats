@@ -36,7 +36,7 @@
 | Wed | Feb 15 | [[file:ANCOVA.html][ANCOVA]]                                                        | [[file:assignments/A04.pdf][A04.pdf]]    |
 |-----+--------+---------------------------------------------------------------+------------|
 | Mon | Feb 20 | Family Day holiday---no class                                 |            |
-| Wed | Feb 22 | reading week---R practical (optional)                         |            |
+| Wed | Feb 22 | reading week---Q&A / work (optional)                          |            |
 |-----+--------+---------------------------------------------------------------+------------|
 | Mon | Feb 27 | Paul away---Q&A with Andrew (optional)                        |            |
 | Wed | Mar 1  | Paul away---Q&A with Andrew (optional)                        |            |
