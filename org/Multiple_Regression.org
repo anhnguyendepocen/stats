@@ -1,0 +1,30 @@
+#+STARTUP: showall
+
+#+TITLE:     Multiple Regression
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      Winter 2017
+#+OPTIONS: toc:nil html:t num:nil
+#+HTML_LINK_UP: http://www.gribblelab.org/stats/index.html
+#+HTML_LINK_HOME: http://www.gribblelab.org/stats/index.html
+#+LANGUAGE:  en
+#+OPTIONS:   num:nil toc:nil TeX:t LaTeX:t
+#+BABEL:     :session *R*
+
+* Slides
+
+- [[file:slides/Multiple_Regression.pdf][Multiple_Regression.pdf]]
+
+* Readings
+
+- [[file:readings/D6.pdf][Dalgaard Chapter 6]]
+- [[file:readings/D11.pdf][Dalgaard Chapter 11]]
+
+
+* Notes
+
+- [[file:notes/Multiple_Regression.html][Multiple Regression]]
+
+* Code
+
+- [[file:code/multReg.R][multReg.R]]

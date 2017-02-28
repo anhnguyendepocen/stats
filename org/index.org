@@ -41,7 +41,7 @@
 | Mon | Feb 27 | Paul away---Q&A with Andrew (optional)                        |            |
 | Wed | Mar 1  | Paul away---Q&A with Andrew (optional)                        |            |
 |-----+--------+---------------------------------------------------------------+------------|
-| Mon | Mar 6  | Multiple Regression                                           |            |
+| Mon | Mar 6  | [[file:Multiple_Regression.html][Multiple Regression]]                                           |            |
 | Wed | Mar 8  | R practical                                                   |            |
 |-----+--------+---------------------------------------------------------------+------------|
 | Mon | Mar 13 | Bootstrapping & Resampling                                    |            |
