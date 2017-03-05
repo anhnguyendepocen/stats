@@ -27,7 +27,7 @@
 | Wed | Jan 25 | [[file:notes/RPractical_20170125.html][R Practical]]                                                   |            |
 |-----+--------+---------------------------------------------------------------+------------|
 | Mon | Jan 30 | [[file:Multiple_Comparisons_and_Power.html][Multiple Comparisions & Statistical Power]]                     | [[file:assignments/A02.pdf][A02.pdf]]    |
-| Wed | Feb 1  | Paul away---R practical with Andrew                           |            |
+| Wed | Feb 1  | R practical with Andrew                                       |            |
 |-----+--------+---------------------------------------------------------------+------------|
 | Mon | Feb 6  | R practical: multiple comparisons                             |            |
 | Wed | Feb 8  | [[file:TwoAndThreeFactorAnova.html][Two and Three Factor ANOVA]] (read on your own, no class today) | [[file:assignments/A03.pdf][A03.pdf]]    |
@@ -38,11 +38,11 @@
 | Mon | Feb 20 | Family Day holiday---no class                                 |            |
 | Wed | Feb 22 | reading week---Q&A / work (optional)                          |            |
 |-----+--------+---------------------------------------------------------------+------------|
-| Mon | Feb 27 | Paul away---Q&A with Andrew (optional)                        |            |
-| Wed | Mar 1  | Paul away---Q&A with Andrew (optional)                        |            |
+| Mon | Feb 27 | Q&A with Andrew (optional)                                    |            |
+| Wed | Mar 1  | Q&A with Andrew (optional)                                    |            |
 |-----+--------+---------------------------------------------------------------+------------|
-| Mon | Mar 6  | [[file:Multiple_Regression.html][Multiple Regression]]                                           |            |
-| Wed | Mar 8  | R practical                                                   |            |
+| Mon | Mar 6  | no class today                                                |            |
+| Wed | Mar 8  | [[file:Multiple_Regression.html][Multiple Regression]]                                           |            |
 |-----+--------+---------------------------------------------------------------+------------|
 | Mon | Mar 13 | Bootstrapping & Resampling                                    |            |
 | Wed | Mar 15 | R practical                                                   |            |
