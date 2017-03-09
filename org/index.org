@@ -47,7 +47,7 @@
 | Mon | Mar 13 | [[file:Bootstrapping_and_Resampling.html][Bootstrapping and Resampling Methods]]                          | [[file:assignments/A06.pdf][A06.pdf]]    |
 | Wed | Mar 15 | R practical                                                   |            |
 |-----+--------+---------------------------------------------------------------+------------|
-| Mon | Mar 20 | Maximum likelihood estimation (MLE) & logistic regression     |            |
+| Mon | Mar 20 | [[file:MLE.html][Maximum Likelihood Estimation (MLE)]]                           |            |
 | Wed | Mar 22 | R practical                                                   |            |
 |-----+--------+---------------------------------------------------------------+------------|
 | Mon | Mar 27 | Bayesian approaches I                                         |            |
