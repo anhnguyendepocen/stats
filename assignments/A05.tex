@@ -1,0 +1,166 @@
+\documentclass[10pt]{article}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{ifthen}
+\usepackage{epsfig}
+\usepackage{fancyvrb}
+\usepackage{url}
+\usepackage{fancyhdr}
+
+\usepackage{amsmath}
+\usepackage{mathspec}
+\usepackage{microtype}
+\setmainfont[
+    Numbers={Monospaced,OldStyle},
+    BoldFont={Guardian TextEgyp Medium},
+  ]{Guardian TextEgyp}\linespread{1.2}
+\setsansfont[BoldFont={Helvetica Neue Medium}]{Helvetica Neue}\linespread{1.2}
+\setmonofont[Scale=0.90]{Menlo}\linespread{1.2}
+\setmathrm{Palatino}
+\setmathfont(Digits,Latin,Greek){Palatino}
+
+\tolerance=5000
+
+\usepackage[margin=1.25in,includeheadfoot]{geometry}
+
+\setlength{\skip\footins}{10mm}      % obsessing about footnote spacing
+\setlength{\parskip}{1ex}            % paragraph spacing
+\setlength{\parindent}{0ex}          % paragraph indentation
+
+\usepackage[compact,noindentafter]{titlesec}
+\titleformat*{\section}{\sffamily\large\bfseries}
+\titlespacing{\section}{0pt}{2ex}{1ex}
+\titleformat*{\subsection}{\sffamily\normalsize\bfseries}
+\titlespacing{\subsection}{0pt}{2ex}{0ex}
+
+% LISTS
+\usepackage{enumitem}
+\setenumerate{nolistsep,itemsep=1.0ex,parsep=0.0ex,leftmargin=*}
+\setitemize{nolistsep,itemsep=1.0ex,parsep=0.0ex,leftmargin=*}
+
+\usepackage[iso]{datetime}
+\usdate
+
+% ------- CUSTOM TITLE FORMAT -------
+%
+\makeatletter
+\renewcommand{\maketitle}{
+\begin{flushleft}          % right align
+{\Large\sffamily\bfseries\@title}   % increase the font size of the title
+\vspace{3ex}\\            % vertical space between the title and author name
+{\normalsize\sffamily\@author}           % author name
+\vspace{0ex}\\             % vertical space between author name and date
+\normalsize\sffamily\@date                     % date
+\vspace{5ex}              % vertical space between the author block and abstract
+\end{flushleft}
+}
+% -----------------------------------
+
+% DEFINE SOME COLORS
+\usepackage{color}
+\definecolor{light-blue}{RGB}{37,128,162}
+\definecolor{light-gray}{gray}{0.975}
+\definecolor{dark-gray}{gray}{0.50}
+
+% CODE LISTINGS
+\usepackage{listings}
+\lstset{columns=fullflexible,
+  basicstyle=\ttfamily\small,
+  backgroundcolor=\color{light-gray},
+  frame=lines, frame=lrtb, framesep=3pt, rulecolor=\color{dark-gray},
+  aboveskip=10pt,
+  belowskip=15pt,
+  breaklines=true,
+  showstringspaces=false,
+  keepspaces=true,
+}
+
+
+\title{Assignment 5---Introduction to Statistics Using R}
+\author{Paul Gribble}
+\date{Winter, 2017}
+
+
+\begin{document}
+
+\maketitle
+
+\thispagestyle{empty}
+
+{\flushleft \sffamily * Due Friday Mar 24}
+
+\section{Multiple Regression}
+
+You are being considered for a position as the new coach of a
+professional basketball team. You just finished a meeting with the
+owners, who are interested in replacing the existing coach because the
+team’s performance has been going downhill. The owners of the team
+have attributed this downward trend to poor recruitment of new
+players, who have been poor performers. The owners tell you that their
+analysis of the data from the previous seasons indicates that one
+particularly weak area has been ``field goals'' (when a player
+attempts to score a basket from the 3-point line or beyond). The
+team’s players, in particular the new recruits, tend to be poor at
+field goals. The problem is, as the owners tell you, that data are not
+available on field goal percentages, for players who are candidate
+recruits; so when it comes time to recruit new players there is no
+easy way to pick new recruits who are good field goal shooters. The
+owners tell you that they have been collecting data for years and
+years on the new recruits and their field goal percentages, and a
+series of other measures that are available for the new potential
+recruits as well. She suggests that ``if you are smart enough to use
+the historical data to be able to predict who among the potential new
+recruits will be the best field goal shooters, you are hired!''
+
+In the file called \texttt{bball.csv}\footnote{\texttt{http://www.gribblelab.org/stats/data/bball.csv}} you will find historical data on 105 previous
+recruits. The variables are:
+
+\begin{center}
+\begin{tabular}{c|l}
+	\texttt{GAMES} &\# games played in previous season \\
+	\texttt{PPM}   &average points scored per minute \\
+	\texttt{MPG}   &average minutes played per game \\
+	\texttt{HGT}   &height of player (centimetres) \\
+	\texttt{FGP}   &field-goal percentage (\% successful shots from 3-point line) \\
+	\texttt{AGE}   &age of player (years) \\
+	\texttt{FTP}   &percentage of successful penalty free throws \\	
+\end{tabular}
+\end{center}
+
+In the file \texttt{bball2.csv}\footnote{\texttt{http://www.gribblelab.org/stats/data/bball2.csv}} you will find data on 5 potential new recruits.
+
+\begin{enumerate}
+
+\item Use multiple regression to develop a model based on the data in
+  \texttt{bball.csv} that will allow you to predict the field goal
+  percentages for the 5 new recruits.
+
+\item Which player will you suggest to the owners that they hire?
+  Explain your decision.
+
+\item What is the precision (in units of \texttt{FGP}) with which you
+  can predict field goal percentage?
+
+\item After giving them your recommendation and explaining your model,
+  the owners ask you ``does the player's age have anything to do with
+  this?''
+
+\item ``What about the player's height? Would I be better off taking
+  on taller players?''
+
+\item ``How many more (or fewer) field goals would a player score if
+  he was 3 inches taller?''
+
+\end{enumerate}
+
+
+
+\end{document}
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: t
+%%% End:

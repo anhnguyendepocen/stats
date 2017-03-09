@@ -42,9 +42,9 @@
 | Wed | Mar 1  | Q&A with Andrew (optional)                                    |            |
 |-----+--------+---------------------------------------------------------------+------------|
 | Mon | Mar 6  | no class today                                                |            |
-| Wed | Mar 8  | [[file:Multiple_Regression.html][Multiple Regression]]                                           |            |
+| Wed | Mar 8  | [[file:Multiple_Regression.html][Multiple Regression]]                                           | [[file:assignments/A05.pdf][A05.pdf]]    |
 |-----+--------+---------------------------------------------------------------+------------|
-| Mon | Mar 13 | Bootstrapping & Resampling                                    |            |
+| Mon | Mar 13 | [[file:Bootstrapping_and_Resampling.html][Bootstrapping and Resampling Methods]]                          | [[file:assignments/A06.pdf][A06.pdf]]    |
 | Wed | Mar 15 | R practical                                                   |            |
 |-----+--------+---------------------------------------------------------------+------------|
 | Mon | Mar 20 | Maximum likelihood estimation (MLE) & logistic regression     |            |

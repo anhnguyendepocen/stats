@@ -1,0 +1,21 @@
+#+STARTUP: showall
+
+#+TITLE:     Bootstrapping & Resampling Methods
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      Winter 2017
+#+OPTIONS: toc:nil html:t num:nil
+#+HTML_LINK_UP: http://www.gribblelab.org/stats/index.html
+#+HTML_LINK_HOME: http://www.gribblelab.org/stats/index.html
+#+LANGUAGE:  en
+#+OPTIONS:   num:nil toc:nil TeX:t LaTeX:t
+#+BABEL:     :session *R*
+
+* Slides
+
+- [[file:slides/Bootstrapping_and_Resampling.pdf][Bootstrapping_and_Resampling.pdf]]
+
+
+* Code
+
+- [[file:code/bootcode.R][bootcode.R]]
