@@ -58,16 +58,16 @@ stat_boot = array(NA, n_boot)
 
 # now do a bootstrap to simulate the null hypothesis,
 # namely that both groups were sampled from the same population
-n_c = length(g_control)
-n_d = length(g_drug)
+g_control_n = length(g_control)
+g_drug_n = length(g_drug)
 g_bucket = c(g_control, g_drug)
+g_bucket_n = length(g_bucket)
 for (i in 1:n_boot) {
-	# reconstitute both groups, ignoring original labels
-	permuted_order <- sample(1:(n_c+n_d), n_c+n_d, replace=FALSE)
-	permuted_bucket <- g_bucket[permuted_order]
-	boot_control <- permuted_bucket[1:n_c]
-	boot_drug <- permuted_bucket[(n_c+1):(n_c+n_d)]
-	stat_boot[i] <- mean(boot_control) - mean(boot_drug)
+  # reconstitute both groups, ignoring original labels
+  permuted_bucket <- sample(g_bucket,g_bucket_n,replace=TRUE)
+  boot_control <- permuted_bucket[1:g_control_n]
+  boot_drug <- permuted_bucket[(g_control_n+1):(g_control_n+g_drug_n)]
+  stat_boot[i] <- mean(boot_control) - mean(boot_drug)
 }
 
 # visualize the empirical bootstrap distribution of our statistic of interest
