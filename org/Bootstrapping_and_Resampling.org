@@ -19,3 +19,11 @@
 * Code
 
 - [[file:code/bootcode.R][bootcode.R]]
+
+* Notes
+
+Note that R has a package called =boot= that contains two useful
+functions for doing bootstrapping and resampling: =boot()= and
+=boot.ci()=. In particular, the =boot.ci()= function will give you the
+so-called Bias-Corrected Bootstrap confidence intervals, which adjusts
+for bias in the boostrap distribution.
