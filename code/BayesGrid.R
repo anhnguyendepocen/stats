@@ -1,5 +1,5 @@
 # load in our discrete prior
-pfile <- file("http://www.gribblelab.org/stats/exercises/prior.txt")
+pfile <- file("http://www.gribblelab.org/stats/code/prior.txt")
 load(pfile)
 
 # plot the prior

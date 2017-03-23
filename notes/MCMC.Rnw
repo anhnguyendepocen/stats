@@ -1,0 +1,134 @@
+\documentclass[11pt]{article}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\usepackage[utf8x]{inputenc}
+%\usepackage{url}
+
+\usepackage[top=1.25in, bottom=1.25in, left=1.25in, right=1.25in]{geometry}
+
+\pagestyle{fancy}
+\fancyhead{} \fancyfoot{} \lhead{\nouppercase{Intro Stats R}}
+\rhead{\nouppercase{\leftmark}} \cfoot{\thepage}
+
+\title{Markov Chain Monte Carlo\\Introduction to Statistics Using R (Psychology 9041B)}
+
+\author{Paul Gribble}
+
+\usepackage[iso]{datetime}
+\usdate
+
+\date{Winter, 2015}
+
+\SweaveOpts{keep.source=TRUE}
+
+\setlength{\skip\footins}{20mm}
+
+\begin{document}
+
+\maketitle
+
+\section*{Two Coins}
+
+Assume someone gives you two coins and you flip each 7 times, and get the following data:
+
+\begin{center}
+\begin{tabular}{c|c}
+Coin 1 & Coin 2\\
+\hline
+H &H\\
+H &H\\
+H &T\\
+H &T\\
+H &T\\
+T &T\\
+T &T\\
+\end{tabular}
+\end{center}
+
+Are the two coins both fair? In other words if you assume a bernoulli process, is the chance of getting a Heads on each coin flip equal to 0.50 for both coins? If not, what is the Pr(Heads)? Is there a difference between Pr(Heads) for Coin 1 and Coin 2?
+
+\subsection*{MCMC}
+
+Here we will use Markov Chain Monte Carlo to answer these questions.
+
+We will model each coin flip as a Bernoulli process. As such we have a model of each coin, and the parameter we need to estimate for each coin is the probability of getting a Heads on each coin toss, Pr(Heads).
+
+We will use the \texttt{rjags} package in \texttt{R} to model this.
+
+Here is the file
+\texttt{http://www.gribblelab.org/stats/code/2coins.bug} which
+specifies the model for each coin:
+
+\newpage
+\begin{verbatim}
+model {
+  # likelihood: each flip is bernoulli
+  for (i in 1:N1) {y1[i] ~ dbern(theta1)}
+  for (i in 1:N2) {y2[i] ~ dbern(theta2)}
+  # prior: slight expectation of 0.5
+  theta1 ~ dbeta(3,3)
+  theta2 ~ dbeta(3,3)
+}
+\end{verbatim}
+
+Now the \texttt{R} code to implement this
+(\texttt{http://www.gribblelab.org/stats/code/2coins.R}):
+
+<<echo=true,fig=true>>=
+# the data
+#
+y1 = c(1,1,1,1,1,0,0)
+y2 = c(1,1,0,0,0,0,0)
+N1 = length(y1)
+N2 = length(y2)
+
+# the model
+#
+library(rjags)
+jags = jags.model('../code/2coins.bug',
+data = list('y1' = y1, 'y2' = y2, 'N1' = N1, 'N2' = N2),
+n.chains = 1, n.adapt = 200)
+
+# run mcmc sampling, generate 1000 samples
+# from the posterior for theta1 and theta2
+post = coda.samples(jags, c('theta1', 'theta2'), 1000)
+plot(post)
+@
+
+and then
+
+<<echo=true,fig=true>>=
+# plot credible differences in theta1 vs theta2
+#
+thetadif = post[[1]][,1] - post[[1]][,2]
+hist(thetadif,25,main="posterior: theta1-theta2",ylim=c(0,180))
+lines(c(0,0),c(0,130),col="black",lty=2,lwd=2)
+
+# mean difference
+#
+meandif = mean(thetadif)
+lines(c(meandif,meandif),c(0,130),col="blue",lty=1,lwd=2)
+
+# 95% credible range for difference between
+# theta1 & theta2
+#
+c95 = quantile(thetadif,c(.025, .975))
+lines(c(c95[1],c95[1]),c(0,130),col="magenta",lty=1,lwd=2)
+lines(c(c95[2],c95[2]),c(0,130),col="magenta",lty=1,lwd=2)
+
+legend(x="topright", col=c("blue","magenta"), lwd=c(2,2), lty=c(1,1),
+legend=c(paste("mean = ",round(meandif,2)),
+paste("95pCR : ", round(c95[1],2), "-", round(c95[2],2))))
+
+# prob thetadif > 0
+#
+prob_g_0 = length(which(thetadif>0)) / length(thetadif)
+text(0, 150, paste("Pr (theta_dif > 0) = ", round(prob_g_0,2)), pos=4)
+text(-.1, 145, paste("Pr (theta_dif <= 0) = ", round(1-prob_g_0,2)), pos=1)
+@
+
+\end{document}
+

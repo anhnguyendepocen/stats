@@ -1,0 +1,50 @@
+#+STARTUP: showall
+
+#+TITLE:     Bayesian Approaches
+#+AUTHOR:    Paul Gribble
+#+EMAIL:     paul@gribblelab.org
+#+DATE:      Winter 2017
+#+OPTIONS: toc:nil html:t num:nil
+#+HTML_LINK_UP: http://www.gribblelab.org/stats/index.html
+#+HTML_LINK_HOME: http://www.gribblelab.org/stats/index.html
+#+LANGUAGE:  en
+#+OPTIONS:   num:nil toc:nil TeX:t LaTeX:t
+#+BABEL:     :session *R*
+
+* Slides
+
+- [[file:slides/Bayes1.pdf][Bayes1.pdf]]
+- [[file:slides/Bayes2.pdf][Bayes2.pdf]]
+
+* Readings I
+
+- [[file:readings/Lynch2.pdf][Lynch Chapter 2]]
+- [[file:readings/Lynch3.pdf][Lynch Chapter 3]]
+- [[file:readings/bayes_chapter_andrew_martin.pdf][Andrew Martin Chapter]]
+- [[http://www.johndcook.com/conjugate_prior_diagram.html][Conjugate Priors (John D. Cook)]]
+- [[http://en.wikipedia.org/wiki/Conjugate_prior][Conjugate Priors (Wikipedia)]]
+
+* Readings II
+
+- [[file:readings/Lynch4.pdf][Lynch Chapter 4]]
+- [[file:readings/Lynch5.pdf][Lynch Chapter 5]]
+- [[file:readings/jackman_ajps.pdf][MCMC (Jackman)]]
+- [[file:readings/RNewsMCMC.pdf][MCMC (R News)]]
+- [[http://jakevdp.github.io/blog/2014/03/11/frequentism-and-bayesianism-a-practical-intro/][Frequentism and Bayesianism: A Practical Introduction (Jake VanderPlas)]]
+
+* Notes
+
+- [[file:notes/MCMC.pdf][MCMC.pdf]]
+
+* Code
+
+- [[file:code/Bayes1.R][Bayes1.R]]
+- [[file:code/BayesGrid.R][BayesGrid.R]]
+- [[file:code/prior.txt][prior.txt]]
+
+* Install rjags on Mac OS X
+
+- install [[https://brew.sh][Homebrew]]
+- in a terminal: brew install jags
+- in RStudio: install.packages("rjags")
+

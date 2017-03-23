@@ -50,10 +50,10 @@
 | Mon | Mar 20 | [[file:MLE.html][Maximum Likelihood Estimation (MLE)]]                           |            |
 | Wed | Mar 22 | R practical                                                   |            |
 |-----+--------+---------------------------------------------------------------+------------|
-| Mon | Mar 27 | Bayesian approaches I                                         |            |
+| Mon | Mar 27 | [[file:Bayes.html][Bayesian Approaches]]                                           |            |
 | Wed | Mar 29 | R practical                                                   |            |
 |-----+--------+---------------------------------------------------------------+------------|
-| Mon | Apr 3  | Bayesian approaches II                                        |            |
+| Mon | Apr 3  | [[file:Bayes.html][Bayesian Approaches]]                                           |            |
 | Wed | Apr 5  | R practical                                                   |            |
 |-----+--------+---------------------------------------------------------------+------------|
 
@@ -71,7 +71,7 @@
 - [[file:notes/SplitPlot.pdf][Split-Plot ANOVA]]
 - [[file:notes/multipleRegression.pdf][Multiple Regression]]
 - [[file:notes/MLE.pdf][Maximum Likelihood Estimation]]
-
+- [[file:notes/MCMC.pdf][MCMC.pdf]]
 
 * Psychology 9041B
 
