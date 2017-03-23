@@ -50,7 +50,7 @@
 | Mon | Mar 20 | [[file:MLE.html][Maximum Likelihood Estimation (MLE)]]                           |            |
 | Wed | Mar 22 | R practical                                                   |            |
 |-----+--------+---------------------------------------------------------------+------------|
-| Mon | Mar 27 | [[file:Bayes.html][Bayesian Approaches]]                                           |            |
+| Mon | Mar 27 | [[file:Bayes.html][Bayesian Approaches]]                                           | [[file:assignments/A07.pdf][A07.pdf]]    |
 | Wed | Mar 29 | R practical                                                   |            |
 |-----+--------+---------------------------------------------------------------+------------|
 | Mon | Apr 3  | [[file:Bayes.html][Bayesian Approaches]]                                           |            |

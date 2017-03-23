@@ -1,0 +1,162 @@
+\documentclass[10pt]{article}
+
+\usepackage{graphicx}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{ifthen}
+\usepackage{epsfig}
+\usepackage{fancyvrb}
+\usepackage{url}
+\usepackage{fancyhdr}
+
+\usepackage{amsmath}
+\usepackage{mathspec}
+\usepackage{microtype}
+\setmainfont[
+    Numbers={Monospaced,OldStyle},
+    BoldFont={Guardian TextEgyp Medium},
+  ]{Guardian TextEgyp}\linespread{1.2}
+\setsansfont[BoldFont={Helvetica Neue Medium}]{Helvetica Neue}\linespread{1.2}
+\setmonofont[Scale=0.90]{Menlo}\linespread{1.2}
+\setmathrm{Palatino}
+\setmathfont(Digits,Latin,Greek){Palatino}
+
+\tolerance=5000
+
+\usepackage[margin=1.25in,includeheadfoot]{geometry}
+
+\setlength{\skip\footins}{10mm}      % obsessing about footnote spacing
+\setlength{\parskip}{1ex}            % paragraph spacing
+\setlength{\parindent}{0ex}          % paragraph indentation
+
+\usepackage[compact,noindentafter]{titlesec}
+\titleformat*{\section}{\sffamily\large\bfseries}
+\titlespacing{\section}{0pt}{2ex}{1ex}
+\titleformat*{\subsection}{\sffamily\normalsize\bfseries}
+\titlespacing{\subsection}{0pt}{2ex}{0ex}
+
+% LISTS
+\usepackage{enumitem}
+\setenumerate{nolistsep,itemsep=1.0ex,parsep=0.0ex,leftmargin=*}
+\setitemize{nolistsep,itemsep=1.0ex,parsep=0.0ex,leftmargin=*}
+
+\usepackage[iso]{datetime}
+\usdate
+
+% ------- CUSTOM TITLE FORMAT -------
+%
+\makeatletter
+\renewcommand{\maketitle}{
+\begin{flushleft}          % right align
+{\Large\sffamily\bfseries\@title}   % increase the font size of the title
+\vspace{3ex}\\            % vertical space between the title and author name
+{\normalsize\sffamily\@author}           % author name
+\vspace{0ex}\\             % vertical space between author name and date
+\normalsize\sffamily\@date                     % date
+\vspace{5ex}              % vertical space between the author block and abstract
+\end{flushleft}
+}
+% -----------------------------------
+
+% DEFINE SOME COLORS
+\usepackage{color}
+\definecolor{light-blue}{RGB}{37,128,162}
+\definecolor{light-gray}{gray}{0.975}
+\definecolor{dark-gray}{gray}{0.50}
+
+% CODE LISTINGS
+\usepackage{listings}
+\lstset{columns=fullflexible,
+  basicstyle=\ttfamily\small,
+  backgroundcolor=\color{light-gray},
+  frame=lines, frame=lrtb, framesep=3pt, rulecolor=\color{dark-gray},
+  aboveskip=10pt,
+  belowskip=15pt,
+  breaklines=true,
+  showstringspaces=false,
+  keepspaces=true,
+}
+
+
+\title{Assignment 7---Introduction to Statistics Using R}
+\author{Paul Gribble}
+\date{Winter, 2017}
+
+
+\begin{document}
+\maketitle
+
+\thispagestyle{empty}
+
+{\flushleft \sffamily * Due Friday Apr 14}
+
+\section*{Bayesian Approaches: Is my coin fair?}
+
+I give you a coin, and you flip it 10 times. The result is:
+
+\begin{quote}
+H T H H H T H T H H
+\end{quote}
+
+Answer the following questions about this result. For questions 1-4,
+use an uninformative prior on $p$. Hint: remember how we saw in class
+that the Beta distribution is a conjugate prior for the Binomial
+likelihood distribution.
+
+Let $p$ be the probability of obtaining H on a single flip of the
+coin.
+
+\begin{enumerate}
+
+\item Plot the prior distribution for $p$ --- that is, for all
+  possible values of $p$, plot $\mathrm{prob}(p)$.
+
+\item Plot the likelihood distribution for $p$ --- that is, for all
+  possible values of $p$, plot $\mathrm{prob}(D|p)$, where $D$ are the
+  data given above for the 10 flips of the coin.
+
+\item Plot the posterior distribution for $p$ --- that is, for all
+  possible values of $p$, plot $\mathrm{prob}(p|D)$.
+
+\item Based on the data from the 10 flips above, what is the
+  most likely value of $p$?
+
+\item What is the 95\% credible interval for $p$?
+
+\item What is the probability that $p > 0.5$?
+
+\end{enumerate}
+
+\newpage
+\section*{Update the model}
+
+You decide that you want more data, so you flip the same coin another
+10 times. Here is the result:
+
+\begin{quote}
+T T H T H H T H H H
+\end{quote}
+
+Incorporate these new data into your model of $p$ to answer the
+following questions:
+
+\begin{enumerate}
+\setcounter{enumi}{6}
+
+\item Plot the new prior distribution for $p$ (hint: it was the
+  posterior computed above from the previous 10 flips).
+
+\item Plot the likelihood function for $p$, given the new data.
+
+\item Plot the new posterior distribution for $p$.
+
+\item What is the most likely value of $p$?
+
+\item What is the 95\% credible interval for $p$?
+
+\item What is the probability that $p > 0.5$?
+
+\end{enumerate}
+
+\end{document}
+
