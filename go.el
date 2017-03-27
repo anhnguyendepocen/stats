@@ -20,49 +20,49 @@
 	("stats_html"
 	 :base-directory "html/"
 	 :base-extension "css\\|html"
-	 :publishing-directory "/ssh:plg@toro.ssc.uwo.ca:~/gribblelab.org/stats/"
+	 :publishing-directory "/ssh:plg@abby.gribblelab.org:~/gribblelab.org/stats/"
 	 :publishing-function org-publish-attachment
 	 :recursive t
 	 )
 	("stats_code"
 	 :base-directory "code/"
 	 :base-extension "c\\|h\\|txt\\|csv\\|r\\|R"
-	 :publishing-directory "/ssh:plg@toro.ssc.uwo.ca:~/gribblelab.org/stats/code/"
+	 :publishing-directory "/ssh:plg@abby.gribblelab.org:~/gribblelab.org/stats/code/"
 	 :publishing-function org-publish-attachment
 	 :recursive t
 	 )
 	("stats_data"
 	 :base-directory "data/"
 	 :base-extension "c\\|h\\|txt\\|csv\\|r\\|R"
-	 :publishing-directory "/ssh:plg@toro.ssc.uwo.ca:~/gribblelab.org/stats/data/"
+	 :publishing-directory "/ssh:plg@abby.gribblelab.org:~/gribblelab.org/stats/data/"
 	 :publishing-function org-publish-attachment
 	 :recursive t
 	 )
 	("stats_images"
 	 :base-directory "images/"
 	 :base-extension "jpg\\|gif\\|png"
-	 :publishing-directory "/ssh:plg@toro.ssc.uwo.ca:~/gribblelab.org/stats/images/"
+	 :publishing-directory "/ssh:plg@abby.gribblelab.org:~/gribblelab.org/stats/images/"
 	 :publishing-function org-publish-attachment
 	 :recursive t
 	 )
 	("stats_slides"
 	 :base-directory "slides/"
 	 :base-extension "pdf"
-	 :publishing-directory "/ssh:plg@toro.ssc.uwo.ca:~/gribblelab.org/stats/slides/"
+	 :publishing-directory "/ssh:plg@abby.gribblelab.org:~/gribblelab.org/stats/slides/"
 	 :publishing-function org-publish-attachment
 	 :recursive t
 	 )
 	("stats_notes"
 	 :base-directory "notes/"
 	 :base-extension "html\\|Rmd\\|pdf\\|Rnw\\|bib"
-	 :publishing-directory "/ssh:plg@toro.ssc.uwo.ca:~/gribblelab.org/stats/notes/"
+	 :publishing-directory "/ssh:plg@abby.gribblelab.org:~/gribblelab.org/stats/notes/"
 	 :publishing-function org-publish-attachment
 	 :recursive t
 	 )
 	("stats_assignments"
 	 :base-directory "assignments/"
 	 :base-extension "tex\\|pdf"
-	 :publishing-directory "/ssh:plg@toro.ssc.uwo.ca:~/gribblelab.org/stats/assignments/"
+	 :publishing-directory "/ssh:plg@abby.gribblelab.org:~/gribblelab.org/stats/assignments/"
 	 :publishing-function org-publish-attachment
 	 :recursive t
 	 )
