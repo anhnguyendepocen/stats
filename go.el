@@ -38,13 +38,6 @@
 	 :publishing-function org-publish-attachment
 	 :recursive t
 	 )
-	("stats_images"
-	 :base-directory "images/"
-	 :base-extension "jpg\\|gif\\|png"
-	 :publishing-directory "/ssh:plg@abby.gribblelab.org:~/gribblelab.org/stats/images/"
-	 :publishing-function org-publish-attachment
-	 :recursive t
-	 )
 	("stats_slides"
 	 :base-directory "slides/"
 	 :base-extension "pdf"
@@ -72,7 +65,6 @@
 (org-publish-project "stats_html")
 (org-publish-project "stats_code")
 (org-publish-project "stats_data")
-(org-publish-project "stats_images")
 (org-publish-project "stats_slides")
 (org-publish-project "stats_notes")
 (org-publish-project "stats_assignments")
