@@ -1,7 +1,7 @@
 # BOOTSTRAPPING AND RESAMPLING TECHNIQUES
 
 #########################################################################################
-# 1. Estimating Population Parameters
+# 1. Estimating Population Parameters with Bootstrapping
 #########################################################################################
 
 # our sample
@@ -38,7 +38,7 @@ abline(v=CI95[2], lty=2, col="blue", lwd=2)
 legend(x="topleft", lty=2, col="blue", legend="95% CI")
 
 #########################################################################################
-# 2. Hypothesis Testing
+# 2. Hypothesis Testing with Permutation Tests
 #########################################################################################
 
 # our control group
@@ -51,32 +51,33 @@ g_drug <- c(74,67,81,61,64,75,81,81,81,67,72,78,83,85,56,78,77,80,79,74)
 (stat_obs <- mean(g_control) - mean(g_drug))
 
 # how many simulated experiments?
-n_boot = 10000
+n_perm = 10000
 
-# create a list to store our bootstrap values
-stat_boot = array(NA, n_boot)
+# create a list to store our permutation test values
+stat_perm = array(NA, n_perm)
 
-# now do a bootstrap to simulate the null hypothesis,
-# namely that both groups were sampled from the same population
+# now do a permutation test to simulate the null hypothesis,
+# namely that the control and drug labels are random
 g_control_n = length(g_control)
 g_drug_n = length(g_drug)
 g_bucket = c(g_control, g_drug)
 g_bucket_n = length(g_bucket)
-for (i in 1:n_boot) {
+for (i in 1:n_perm) {
   # reconstitute both groups, ignoring original labels
-  permuted_bucket <- sample(g_bucket,g_bucket_n,replace=TRUE)
-  boot_control <- permuted_bucket[1:g_control_n]
-  boot_drug <- permuted_bucket[(g_control_n+1):(g_control_n+g_drug_n)]
-  stat_boot[i] <- mean(boot_control) - mean(boot_drug)
+  permuted_bucket <- sample(g_bucket,g_bucket_n,replace=FALSE)
+  perm_control <- permuted_bucket[1:g_control_n]
+  perm_drug <- permuted_bucket[(g_control_n+1):(g_control_n+g_drug_n)]
+  stat_perm[i] <- mean(perm_control) - mean(perm_drug)
 }
 
-# visualize the empirical bootstrap distribution of our statistic of interest
-hist(stat_boot, 50, xlab="mean(control) - mean(drug)", main="bootstrap")
+# visualize the empirical permutation distribution of our statistic of interest
+hist(stat_perm, 50, xlab="mean(control) - mean(drug)", main="Permutation Test")
 abline(v=stat_obs, col="red", lwd=2)
 
-# how many times in the bootstrap did we observe a stat_boot as big or bigger than our stat_obs?
-(p_boot <- length(which(stat_boot >= stat_obs)) / n_boot)
-legend(x="topleft", lty=1, col="red", legend=paste("stat_obs: p = ", p_boot))
+# how many times in the permutation tests did we observe a stat_perm
+# as big or bigger than our stat_obs?
+(p_perm <- length(which(stat_perm >= stat_obs)) / n_perm)
+legend(x="topleft", lty=1, col="red", legend=paste("stat_obs: p = ", p_perm))
 
 
 #########################################################################################
